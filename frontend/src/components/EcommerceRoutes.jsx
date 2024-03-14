@@ -1,11 +1,12 @@
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import Home from './pages/Home'
 
 
 const EcommerceRoutes = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<h1>Home</h1>}/>
+        <Route index element={<Home/>}/>
         <Route path='/cart' element={<h1>Cart</h1>}/>
         <Route path='/products' element={<h1>Produtos</h1>}/>
         <Route path='/products/:id' element={<h1>Produto selected</h1>}/>
