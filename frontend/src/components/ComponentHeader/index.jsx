@@ -26,7 +26,7 @@ const ComponentHeader = () => {
   }
 
   return (
-    <header className='header'>
+    <header className='header' >
       
       <Link to="/" className='link-logo'>
         <img className='logo' src={Logo} alt="Logo" />
@@ -72,7 +72,7 @@ const ComponentHeader = () => {
           {
             stateInputSearch && <input type="text" placeholder='ex: camiseta...'/>
           }
-          <CiSearch onClick={handleInputSeacrh}/>
+          <CiSearch onClick={handleInputSeacrh} />
         </div>
 
         <div className='login-user'>

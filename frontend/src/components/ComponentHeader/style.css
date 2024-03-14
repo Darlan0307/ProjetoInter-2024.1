@@ -2,6 +2,7 @@
 
 svg{
  color:var( --font-color);
+ transition: all .3s ease-in-out;
 }
 
 .header{
@@ -22,7 +23,11 @@ svg{
 .logo{
  width: 100%;
  max-width: 300px;  
+ transition: all .6s;
+}
 
+.logo:hover{
+  transform: scale(1.1);
 }
 
 /* Icons Menu */
@@ -139,6 +144,7 @@ svg{
   max-width: 250px;
   outline: none;
   border-radius: 20px;
+  transition: all .6s;
 }
 
 .wrap-input svg{
@@ -179,6 +185,11 @@ svg{
   font-size: 35px;
 }
 
+.wrap-input:hover,.login-user:hover,.cart:hover{
+  svg{
+    transform: scale(1.1);
+  }
+}
 
 @media (min-width:530px){
   .btn-open{
@@ -197,6 +208,11 @@ svg{
     bottom: -3em;
     left: 0;
     transform: translateX(-40%);
+  }
+
+  .wrap-input input:focus{
+    transform: translateX(-40%) scale(1.1);
+    border-color: var(--primary-color);
   }
 
   
