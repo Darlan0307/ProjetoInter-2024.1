@@ -1,11 +1,9 @@
-import ComponentHeader from "../../ComponentHeader"
-
+import Apresentation from "../../Apresentation"
 
 const Home = () => {
   return (
     <>
-      <ComponentHeader/>
-      <h2>Main</h2>
+      <Apresentation/>
     </>
   )
 }

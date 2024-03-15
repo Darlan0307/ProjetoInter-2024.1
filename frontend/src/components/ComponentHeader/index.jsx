@@ -1,5 +1,5 @@
 import './style.css'
-import Logo from '../../assets/logo1.png'
+import Logo from '../../assets/logo.png'
 import { useMediaQuery } from 'react-responsive';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
@@ -52,16 +52,16 @@ const ComponentHeader = () => {
 
         <ul className='menu' onClick={()=>handleMenu()}>
           <li>
-            <a href="#home">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="#services">Mais Vendidos</a>
+            <Link to="/popular">Mais Vendidos</Link>
           </li>
           <li>
-            <a href="#depoimentos">Novidades</a>
+            <Link to="/news">Novidades</Link>
           </li>
           <li>
-            <a href="#contatos">Contatos</a>
+            <Link to="/location">Localização</Link>
           </li>
         </ul>
       </nav>

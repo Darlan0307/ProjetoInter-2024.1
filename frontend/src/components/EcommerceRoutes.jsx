@@ -1,10 +1,12 @@
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import Home from './pages/Home'
+import ComponentHeader from './ComponentHeader'
 
 
 const EcommerceRoutes = () => {
   return (
     <BrowserRouter>
+      <ComponentHeader/>
       <Routes>
         <Route index element={<Home/>}/>
         <Route path='/cart' element={<h1>Cart</h1>}/>
