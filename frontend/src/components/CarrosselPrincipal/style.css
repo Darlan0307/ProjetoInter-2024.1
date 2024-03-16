@@ -1,0 +1,155 @@
+@import url(../../variables.css);
+
+.carousel{
+  margin: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+  position: relative;
+
+}
+
+.carousel-subtitle{
+  color: var(--primary-color);
+  text-align: center;
+  font-size: calc(2em + 1vw);
+}
+
+.container-carousel{
+  width: 100%;
+  background-color: var(--bg-color);
+  position: relative;
+}
+
+.card-category{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4em;
+  padding: 20px 10px;
+  height: 320px;
+}
+
+.image-card-category{
+  width: 100%;
+  max-width: 250px;
+  transform: translateY(6%) rotate(10deg);
+}
+
+.content-card{
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.content-card h3,.content-card p{
+  color: var(--font-color);
+}
+
+.content-card h3{
+  font-size: 2.5em;
+  position: relative;
+}
+.content-card h3::after{
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  height: 2px;
+  width: 20%;
+  background-color: var(--font-color);
+}
+
+.content-card p{
+  font-size: 1.2em;
+  max-width: 500px;
+}
+
+.content-card a{
+  text-decoration: none;
+  background-color: var(--primary-color);
+  width: 200px;
+  border-radius: 20px;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5em;
+}
+
+.content-card a svg,.content-card a span{
+  color: white;
+}
+
+.content-card a svg{
+  font-size: 40px;
+}
+.content-card a span{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.action-carousel{
+ padding: 10px;
+ display: flex;
+ gap: 1em;
+ justify-content: flex-end;
+}
+
+.action-carousel button{
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 10px;
+  transition: all .3s;
+}
+
+.action-carousel button:active{
+  transform: scale(.5);
+}
+
+.action-carousel button svg{
+  font-size: 35px;
+  color: white;
+}
+
+.action-carousel .custom-prev-button{
+  border: 1px solid var(--primary-color);
+}
+
+.action-carousel .custom-prev-button svg{
+  color: var(--primary-color);
+}
+
+.action-carousel .custom-next-button{
+  background-color: var(--primary-color);
+}
+
+.action-carousel .custom-next-button svg{
+  color: white;
+}
+
+@media (max-width:750px){
+
+  .card-category{
+    height: fit-content;
+  }
+
+  .image-card-category{
+    transform: none;
+  }
+  .card-category{
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .content-card{
+    gap: 1em;
+  }
+}
+
+@media (min-width:751px){
+  .action-carousel{
+    margin-right: 10%;
+  }
+}
