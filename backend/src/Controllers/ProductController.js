@@ -1,6 +1,6 @@
 import { prisma } from '../services/prisma.js'
-import cloudinary from 'cloudinary'
-import { configCloud } from '../services/cloudinary.js'
+import { uploadImage } from '../services/cloudinary.js'
+
 
 export class ProductController{
 
@@ -21,21 +21,18 @@ export class ProductController{
       if(existingProduct) return res.status(400).json({error: "Produto já existente"}) 
 
       // Upload de imagem no cloudinary
-      cloudinary.v2.config(configCloud);
-
-      const result = await cloudinary.v2.uploader.upload(req.file.path)
+      const result = await uploadImage(req.file.path)
       
-      if(!result.url) throw new Error('Erro ao enviar imagem')
-
+      if(!result.url) return res.status(400).json({error: "Erro ao enviar imagem"}) 
 
       // Convertendo os valores
       const priceConverted = parseFloat(price)
       const quantityConverted = parseInt(quantity)
 
-      const product = await prisma.product.create({
+      await prisma.product.create({
         data:{
           name,
-          urlImage: result.secure_url,
+          urlImage: result.url,
           description,
           category,
           gender,
@@ -43,7 +40,7 @@ export class ProductController{
           quantity: quantityConverted
         }
       })
-      return res.status(201).json(product)
+      return res.status(201)
     } catch (error) {
       res.status(400).json({msg:"Error ao tentar criar um produto"})
     }
