@@ -35,7 +35,7 @@ model product{
 
 // Model dos usuários
 model user{
-	id String @id @default(uuid()) @map("_id") @db.ObjectId
+	id String @id @default(uuid()) @map("_id")
   admin Boolean @default(false)
 	name String
 	email String @unique

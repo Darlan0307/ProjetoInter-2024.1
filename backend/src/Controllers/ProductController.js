@@ -41,7 +41,7 @@ export class ProductController{
           quantity: quantityConverted
         }
       })
-      return res.status(201)
+      return res.status(201).json("Produto criado com sucesso")
     } catch (error) {
       res.status(400).json({msg:"Error ao tentar criar um produto"})
     }
