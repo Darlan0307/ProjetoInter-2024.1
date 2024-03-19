@@ -1,0 +1,21 @@
+@import url(../../../variables.css);
+
+.signup{
+
+  width: 100%;
+  padding: 20px;
+  max-width: 900px;
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+  margin: 3em auto;
+}
+
+.signup > img{
+  width: 100%;
+  max-width: 500px;
+}
+
+.content-signup{
+  flex: 1;
+}
