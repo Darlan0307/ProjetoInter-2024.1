@@ -29,7 +29,7 @@ const dataCategory = [
   },
   {
     image: camiseta,
-    title: "Calçados",
+    title: "Bermuda",
     description:"Lorem ipsum dolor sit amet consectetur adipisicing elit.",
   },
 ]

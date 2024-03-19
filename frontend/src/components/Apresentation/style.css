@@ -1,11 +1,15 @@
 @import url(../../variables.css);
 
 .apresentation{
-  margin-top: 5em;
+  margin-top: 3em;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
+}
+
+.content{
+  padding: 10px;
 }
 
 .title{
@@ -37,12 +41,10 @@
 
 .banner{
   width: 100%;
-  min-height: 40vh;
   max-height: 90vh;
 }
 
 @media (min-width:800px){
-
   .apresentation{
     margin-top: 0;
   }

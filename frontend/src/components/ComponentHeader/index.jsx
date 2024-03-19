@@ -5,26 +5,18 @@ import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { TiThMenu } from "react-icons/ti";
 import { IoIosCloseCircle } from "react-icons/io";
-import { CiSearch,CiUser } from "react-icons/ci";
+import { CiUser } from "react-icons/ci";
 import { BsHandbag } from "react-icons/bs";
-import { useState } from 'react';
 
 const ComponentHeader = () => {
 
   const isMobile = useMediaQuery({ query: '(max-width: 900px)' });
-  const openInputSearch = useMediaQuery({ query: '(max-width: 530px)' });
-  const [stateInputSearch,setStateInputSeach] = useState(openInputSearch)
 
   const refMenu = useRef()
 
   const handleMenu = () => {
     refMenu.current.classList.toggle('open')
   }
-
-  const handleInputSeacrh = () => {
-    setStateInputSeach( !stateInputSearch )
-  }
-
   return (
     <header className='header' >
       
@@ -54,6 +46,11 @@ const ComponentHeader = () => {
           <li>
             <Link to="/">Home</Link>
           </li>
+          {/* {
+            visible && <li>
+            <Link to="/adm">ADM</Link>
+          </li>
+          } */}
           <li>
             <Link to="/popular">Mais Vendidos</Link>
           </li>
@@ -68,13 +65,6 @@ const ComponentHeader = () => {
 
       <div className='actions-user'>
         
-        <div className='wrap-input'>
-          {
-            stateInputSearch && <input type="text" placeholder='ex: camiseta...'/>
-          }
-          <CiSearch onClick={handleInputSeacrh} />
-        </div>
-
         <div className='login-user'>
           <CiUser/>
           <span>text</span>

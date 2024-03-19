@@ -127,34 +127,9 @@ svg{
 .actions-user{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  
   gap: 2em;
 }
 
-.wrap-input{
-  grid-column: 1/-1;
-  display: flex;
-  justify-content: center;
-  gap: .5em;
-  align-items: center;
-  position: relative;
-}
-
-.wrap-input input{
-  border: 1px solid var(--font-color);
-  padding: 5px 10px;
-  font-size: 16px;
-  max-width: 250px;
-  outline: none;
-  border-radius: 20px;
-  transition: all .6s;
-  z-index: 10;
-}
-
-.wrap-input svg{
-  font-size: 40px;
-  cursor: pointer;
-}
 
 .login-user,.cart{
   justify-self: center;
@@ -189,7 +164,7 @@ svg{
   font-size: 35px;
 }
 
-.wrap-input:hover,.login-user:hover,.cart:hover{
+.login-user:hover,.cart:hover{
   svg{
     transform: scale(1.1);
   }
@@ -201,32 +176,13 @@ svg{
     right: 5%;
     top: 2em;
   }
-
   .actions-user{
     display: flex;
     
   }
-
-  .wrap-input input{
-    position: absolute;
-    bottom: -3em;
-    left: 0;
-    transform: translateX(-40%);
-  }
-
-  .wrap-input input:focus{
-    transform: translateX(-40%) scale(1.1);
-    border-color: var(--primary-color);
-  }
-
-  
 }
 
 @media (max-width:529px){
-  .wrap-input svg{
-    display: none;
-  }
-
   .btn-open,.link-logo{
     position: absolute;
     
