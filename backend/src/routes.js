@@ -6,6 +6,7 @@ import { ProductController } from './Controllers/ProductController.js'
 import { UserController } from "./Controllers/UserController.js";
 import { AuthController } from "./Controllers/AuthController.js";
 import { uploader } from "./services/multer.js";
+import { AuthMiddleWares } from './middlewares/AuthMiddleWares.js'
 
 const productcontroller = new ProductController()
 const usercontroller = new UserController()
@@ -19,15 +20,15 @@ routes.get("/", (req, res) => {
 
 routes.get("/products",productcontroller.getAllProducts)
 
-routes.post("/product",uploader.single('imageProduct'),productcontroller.createProduct)
+routes.post("/product",uploader.single('imageProduct'),AuthMiddleWares,productcontroller.createProduct)
 
-routes.put("/product/:id",productcontroller.updateProduct)
+routes.put("/product/:id",AuthMiddleWares,productcontroller.updateProduct)
 
-routes.delete("/product/:id",productcontroller.deleteProduct)
+routes.delete("/product/:id",AuthMiddleWares,productcontroller.deleteProduct)
 
 // Routes users
 
-routes.get("/users",usercontroller.listerUsers) // Listar usuários
+routes.get("/users",AuthMiddleWares,usercontroller.listerUsers) // Listar usuários
 
 routes.post("/user",usercontroller.createUser) // Cadastrar usuario
 
