@@ -17,6 +17,10 @@ routes.get("/products",productcontroller.getAllProducts)
 
 routes.post("/product",uploader.single('imageProduct'),productcontroller.createProduct)
 
+routes.put("/product/:id",productcontroller.updateProduct)
+
+routes.delete("/product/:id",productcontroller.deleteProduct)
+
 // Routes users
 
 export default routes

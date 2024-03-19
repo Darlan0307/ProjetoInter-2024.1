@@ -1,5 +1,5 @@
 import { prisma } from '../services/prisma.js'
-import { uploadImage } from '../services/cloudinary.js'
+import { deleteImage, uploadImage } from '../services/cloudinary.js'
 
 
 export class ProductController{
@@ -33,6 +33,7 @@ export class ProductController{
         data:{
           name,
           urlImage: result.url,
+          publicId: result.publicId,
           description,
           category,
           gender,
@@ -48,12 +49,54 @@ export class ProductController{
 
   async getAllProducts(req,res){
     try {
-
       const  products = await prisma.product.findMany()
 
       res.status(200).json({data:products})
     } catch (error) {
+      res.status(400).json({msg:"Error ao tentar acessar o banco de dados"});
+    }
+  }
 
+  async updateProduct(req,res){
+    try {
+      const { id } = req.params
+      const updates = req.body
+
+      const  productExist = await prisma.product.findUnique({where:{id}})
+
+      if (!productExist)return res.status(400).json({error: "Produto não existe"}) 
+
+      const updatedProduct = await prisma.product.update({
+        where: { id },
+        data: updates,
+      });
+
+      res.status(200).json({ data: updatedProduct });
+
+    } catch (error) {
+      res.status(400).json({msg:"Error ao tentar acessar o banco de dados"});
+    }
+  }
+
+  async deleteProduct(req,res){
+    try {
+      const { id } =  req.params;
+
+      const productExists = await prisma.product.findUnique({
+        where :{id} 
+      });
+
+      if(!productExists) return res.status(400).json({error: "Produto não existe"})
+
+      // Removendo imagem do produto no clodinary
+      deleteImage(productExists.publicId)
+
+      // Removendo o produto da base de dados
+      await prisma.product.delete({where:{id}})
+      
+      return res.status(204).json({message:"Removido com sucesso!"});
+
+    } catch (error) {
       res.status(400).json({msg:"Error ao tentar acessar o banco de dados"});
     }
   }

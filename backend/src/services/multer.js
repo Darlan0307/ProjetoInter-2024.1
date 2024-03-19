@@ -13,5 +13,5 @@ export const uploader = multer({
     }
     cb(null, true);
   },
-  limits: { fieldSize: 8 * 1024 * 1024,fileSize: 2 * 1024 * 1024},
+  limits: { fieldSize: 8 * 1024 * 1024,fileSize: 5 * 1024 * 1024},
 });

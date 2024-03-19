@@ -12,6 +12,7 @@ model product{
   id String @id @default(uuid()) @map("_id")
 	name String @unique
   urlImage String
+  publicId String
 	description String
 	category String
   gender String
@@ -19,6 +20,18 @@ model product{
   quantity Int
 	created_at DateTime? @default(now())
 }
+
+// masculino
+// camiseta
+// calça
+// bermuda
+
+// Feminino
+// blusa
+// calça
+// vestido
+// short
+// saia
 
 // Model dos usuários
 model user{
