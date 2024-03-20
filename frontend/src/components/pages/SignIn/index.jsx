@@ -1,21 +1,15 @@
-import './style.css'
+import './styles.css'
+import imgIlustration from "../../../assets/img-signin.png"
 import { Link } from 'react-router-dom'
 
-import imgIlustration from '../../../assets/img-signup.png'
-
-const SignUp = () => {
+const SignIn = () => {
   return (
     <main className='signup'>
       <img src={imgIlustration} alt="ilustração de uma pessoa na janela" />
       <div className='content-signup'>
-        <h2>Crie sua conta agora</h2>
+        <h2>Faça login</h2>
         <p>Para ter acesso a todos os nossos recursos</p>
-
         <form className='form-signup' autoComplete='off'>
-          <div className='wrap-input'>  
-            <input type="text" className='input' id='name' min={3} required/>
-            <label className='label' htmlFor="name">Nome</label>
-          </div>
           <div className='wrap-input'>  
             <input type="email" className='input' id='email' min={10} required/>
             <label className='label' htmlFor="email">Email</label>
@@ -24,12 +18,8 @@ const SignUp = () => {
             <input type="password" className='input' id='password' min={6} required/>
             <label className='label' htmlFor="password">Senha</label>
           </div>
-          <div className='wrap-input'>  
-            <input type="password" className='input' id='confirmpassword'  min={6} required/>
-            <label className='label' htmlFor="confirmpassword">Confirme a senha</label>
-          </div>
-          <button type='submit' className='btn-form'>Criar Conta</button>
-          <p className='link-form'>Já tem uma conta? <Link to="/signin">Faça login</Link> </p>
+          <button type='submit' className='btn-form'>Entrar</button>
+          <p className='link-form'>Não tem uma conta? <Link to="/signup">Crie agora</Link> </p>
         </form>
         
       </div>
@@ -37,4 +27,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default SignIn

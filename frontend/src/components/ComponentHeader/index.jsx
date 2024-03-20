@@ -65,10 +65,10 @@ const ComponentHeader = () => {
 
       <div className='actions-user'>
         
-        <div className='login-user'>
+        <Link to="/signin" className='login-user'>
           <CiUser/>
           <span>text</span>
-        </div>
+        </Link>
         
         <Link to="/cart" className='cart'>
           <BsHandbag/>

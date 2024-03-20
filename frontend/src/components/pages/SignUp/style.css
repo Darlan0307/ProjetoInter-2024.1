@@ -1,14 +1,14 @@
 @import url(../../../variables.css);
 
 .signup{
-
   width: 100%;
   padding: 20px;
   max-width: 900px;
   display: flex;
   gap: 1em;
   flex-direction: column;
-  margin: 3em auto;
+  align-items: center;
+  margin: 0 auto;
 }
 
 .signup > img{
@@ -17,5 +17,105 @@
 }
 
 .content-signup{
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .6em;
+  max-width: 400px;
+}
+.content-signup h2{
+  text-align: center;
+}
+
+.content-signup p{
+  font-size: 1.1em;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.content-signup h2, .content-signup p, .content-signup label {
+  color: var(--font-color);
+} 
+
+.form-signup{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+  width: 100%;
+}
+
+.wrap-input{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-width: 300px;
+}
+
+.input{
+  outline: none;
+  border: 1px solid var(--font-color);
+  background-color: transparent;
+  border-radius: 15px;
+  font-size: 16px;
+  width: 100%;
+  padding: 10px 15px;
+  transition: all .6s ease-in-out;
+}
+
+.label{
+  position: absolute;
+  transition: all .5s;
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
+}
+
+.input:focus + .label, .input:valid + label{
+  transform: none;
+  top: -8px;
+  left: 4%;
+  background-color: #f7f6f4;
+  font-size: 14px;
+  color: var(--primary-color);
+  
+}
+
+.input:focus , .input:valid{
+  border-color: var(--primary-color);
+}
+
+
+.btn-form{
+  width: 200px;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  background-color: var(--primary-color);
+  font-weight: bold;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.btn-form:hover{
+  transform: scale(1.04);
+  box-shadow: 0 0 15px var(--primary-color);
+}
+
+.link-form{
+  text-align: center;
+}
+
+.link-form a{
+  color: #0b66c2;
+}
+
+@media (min-width:900px){
+  .signup{
+    flex-direction: row;
+  }
+
 }

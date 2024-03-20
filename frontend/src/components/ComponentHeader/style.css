@@ -140,6 +140,8 @@ svg{
   align-items:center;
   gap: .3em;
   cursor: pointer;
+  text-decoration: none;
+  color: var(--font-color);
 }
 
 .login-user svg{
