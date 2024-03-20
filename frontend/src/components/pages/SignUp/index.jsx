@@ -2,8 +2,46 @@ import './style.css'
 import { Link } from 'react-router-dom'
 
 import imgIlustration from '../../../assets/img-signup.png'
+import { useState } from 'react'
+import { ValidateFormUser } from '../../../utils/ValidateFormUser'
+import InputField from '../../ui/Input'
 
 const SignUp = () => {
+
+  const [name,setName] = useState('')
+  const [email,setEmail] = useState('')
+  const [password,setPassword] = useState('')
+  const [confirmPassword,setConfirmPassword] = useState('')
+
+  const [erros,setErros] = useState(null)
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setErros(null)
+
+    const userData = {
+      name,
+      email,
+      password,
+      confirmPassword
+    }
+
+    const objErros = ValidateFormUser(userData);
+
+    if(Object.keys(objErros).length > 0){
+      setErros(objErros)
+      // toast.warn("Preencha todos os campos corretamente")
+      return;
+    }
+
+    setName('')
+    setEmail('')
+    setPassword('')
+    setConfirmPassword('')
+
+    // Enviar ao banco de dados
+  }
+
   return (
     <main className='signup'>
       <img src={imgIlustration} alt="ilustração de uma pessoa na janela" />
@@ -11,25 +49,50 @@ const SignUp = () => {
         <h2>Crie sua conta agora</h2>
         <p>Para ter acesso a todos os nossos recursos</p>
 
-        <form className='form-signup' autoComplete='off'>
-          <div className='wrap-input'>  
-            <input type="text" className='input' id='name' min={3} required/>
-            <label className='label' htmlFor="name">Nome</label>
-          </div>
-          <div className='wrap-input'>  
-            <input type="email" className='input' id='email' min={10} required/>
-            <label className='label' htmlFor="email">Email</label>
-          </div>
-          <div className='wrap-input'>  
-            <input type="password" className='input' id='password' min={6} required/>
-            <label className='label' htmlFor="password">Senha</label>
-          </div>
-          <div className='wrap-input'>  
-            <input type="password" className='input' id='confirmpassword'  min={6} required/>
-            <label className='label' htmlFor="confirmpassword">Confirme a senha</label>
-          </div>
-          <button type='submit' className='btn-form'>Criar Conta</button>
-          <p className='link-form'>Já tem uma conta? <Link to="/signin">Faça login</Link> </p>
+        <form className='form-signup' autoComplete='off' onSubmit={handleSubmit}>
+
+        <InputField
+          id="name"
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          label="Nome"
+          error={erros?.name}
+          required
+        />
+
+        <InputField
+          id="email"
+          type="text"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          label="Email"
+          error={erros?.email}
+          required
+        />
+
+        <InputField
+          id="password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          label="Senha"
+          error={erros?.password}
+          required
+        />
+
+        <InputField
+          id="confirmpassword"
+          type="password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          label="Confirme a senha"
+          error={erros?.confirmPassword}
+          required
+        />
+
+        <button type='submit' className='btn-form'>Criar Conta</button>
+        <p className='link-form'>Já tem uma conta? <Link to="/signin">Faça login</Link> </p>
         </form>
         
       </div>
