@@ -1,9 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { api } from '../services/api'
+import { useLoader } from "./LoaderContext";
 
 export const ProductContext = createContext({});
 
 export const ProductProvider = ({children}) => {
+
+  const { setIsLoading } = useLoader()
 
   const [products, setProducts] = useState([])
   const [filters, setFilters] = useState({
@@ -47,11 +50,12 @@ export const ProductProvider = ({children}) => {
 
   const fetchData =  async () => {
     try {
-
+      setIsLoading(true)
       const response = await api.get('/products')
 
       setProducts(response.data.data)
-      console.log(response.data.data);
+      // console.log(response.data.data);
+      setIsLoading(false)
     } catch (error) {
       console.log(error);
     }

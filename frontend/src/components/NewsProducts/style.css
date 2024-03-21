@@ -15,13 +15,6 @@
   
 }
 
-@media (min-width:900px){
-  .news-products-title{
-    position: relative;
-    text-align: left;
-    left: 10%;
-  }
-}
 
 .product-container{
   display: flex;
@@ -48,7 +41,8 @@
 .new-product-content{
   display: flex;
   flex-direction: column;
-  gap: .6em;
+  gap: 1em;
+  padding: 10px;
 }
 
 .new-product-content a{

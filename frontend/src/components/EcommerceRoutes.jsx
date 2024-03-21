@@ -3,6 +3,7 @@ import Home from './pages/Home'
 import ComponentHeader from './ComponentHeader'
 import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
+import Loader from './Loader'
 
 
 const EcommerceRoutes = () => {
@@ -18,6 +19,8 @@ const EcommerceRoutes = () => {
         <Route path='/signup' element={<SignUp/>}/>
         <Route path='*' element={<h1>Page 404 not found</h1>}/>
       </Routes>
+
+      <Loader/>
     </BrowserRouter>
   )
 }
