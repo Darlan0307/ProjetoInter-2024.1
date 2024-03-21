@@ -20,6 +20,7 @@ routes.get("/", (req, res) => {
 
 routes.get("/products",productcontroller.getAllProducts)
 
+
 routes.post("/product",uploader.single('imageProduct'),AuthMiddleWares,productcontroller.createProduct)
 
 routes.put("/product/:id",AuthMiddleWares,productcontroller.updateProduct)

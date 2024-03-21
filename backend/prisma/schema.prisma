@@ -1,7 +1,6 @@
 generator client {
   provider = "prisma-client-js"
 }
-
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
@@ -20,19 +19,6 @@ model product{
   quantity Int
 	created_at DateTime? @default(now())
 }
-
-// masculino
-// camiseta
-// calça
-// bermuda
-
-// Feminino
-// blusa
-// calça
-// vestido
-// short
-// saia
-
 // Model dos usuários
 model user{
 	id String @id @default(uuid()) @map("_id")
