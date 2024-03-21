@@ -1,0 +1,62 @@
+@import url(../../variables.css);
+
+.news-products{
+  margin: 5em 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.news-products-title{
+  color: var(--primary-color);
+  text-align: center;
+  font-size: calc(1.4em + 1vw);
+  
+}
+
+@media (min-width:900px){
+  .news-products-title{
+    position: relative;
+    text-align: left;
+    left: 10%;
+  }
+}
+
+.product-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2em;
+}
+.new-product{
+  background-color: var(--bg-color);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+  padding: 20px 10px;
+  border-radius: 20px;
+  min-height: 250px;
+}
+
+.new-product-content h3,.new-product-content p{
+  color: var(--font-color);
+  text-align: center;
+}
+
+.new-product-content{
+  display: flex;
+  flex-direction: column;
+  gap: .6em;
+}
+
+.new-product-content a{
+  font-weight: bold;
+  color: var(--font-color);
+  font-size: 18px;
+}
+
+.new-product img{
+  width: 120px;
+}

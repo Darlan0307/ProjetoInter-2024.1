@@ -55,7 +55,7 @@ const ComponentHeader = () => {
             <Link to="/popular">Mais Vendidos</Link>
           </li>
           <li>
-            <Link to="/news">Novidades</Link>
+            <Link to="/products">Produtos</Link>
           </li>
           <li>
             <Link to="/location">Localização</Link>

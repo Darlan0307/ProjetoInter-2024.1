@@ -1,10 +1,13 @@
 import EcommerceRoutes from "./components/EcommerceRoutes"
+import { ProductProvider } from "./context/ProductContext"
 
 function App() {
  
   return (
     <>
-      <EcommerceRoutes/>
+      <ProductProvider>
+        <EcommerceRoutes/>
+      </ProductProvider>
     </>
   )
 }
