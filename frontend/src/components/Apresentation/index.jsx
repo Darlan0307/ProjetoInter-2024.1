@@ -10,7 +10,7 @@ const Apresentation = () => {
   return (
     <section className='apresentation'>
       <div className='content'>
-      <h1 className='title'>Imperio da Moda</h1>
+      <h1 className='title'>Império da Moda</h1>
       <h2 className='subtitle'>Está pensando em ficar estiloso? você veio ao lugar certo.</h2>
       </div>
       

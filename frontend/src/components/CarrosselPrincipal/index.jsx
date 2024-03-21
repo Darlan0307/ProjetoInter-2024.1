@@ -40,7 +40,7 @@ const CarrosselPrincipal = () => {
 
   return (
     <section className='carousel'>
-      <h2 className='carousel-subtitle'>Aqui você encontra</h2>
+      <h2 className='carousel-subtitle'>Nós Temos</h2>
 
       <Swiper
       className='container-carousel'
