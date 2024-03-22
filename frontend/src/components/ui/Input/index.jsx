@@ -11,7 +11,7 @@ const InputField = ({
   required,
   ...otherProps
 }) => {
-  const [inputType, setInputType] = useState(type); // Maintain state for input type
+  const [inputType, setInputType] = useState(type);
   const inputRef = useRef();
 
   const handleClick = () => {

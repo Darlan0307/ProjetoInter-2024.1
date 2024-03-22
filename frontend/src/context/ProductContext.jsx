@@ -25,10 +25,10 @@ export const ProductProvider = ({children}) => {
   }
 
   // Filtros
-  const handleNameFilterChange = (text) => {
+  const handleNameFilterChange = (event) => {
     setFilters({
       ...filters,
-      name: text,
+      name: event.target.value,
     });
   };
 
@@ -79,7 +79,7 @@ export const ProductProvider = ({children}) => {
         nextPage,
         prevPage,
         handleNameFilterChange,
-        handleGenreFilterChange: handleGenderFilterChange,
+        handleGenderFilterChange,
         handleCategoryFilterChange
         }}
       > 
