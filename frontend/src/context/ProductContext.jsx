@@ -9,6 +9,13 @@ export const ProductProvider = ({children}) => {
   const { setIsLoading } = useLoader()
 
   const [products, setProducts] = useState([])
+  const [productSelected, setProductSelected] = useState(null)
+
+  const handleProductSelected = (id) => {
+    const productFiltred = products.find((item)=> item.id == id)
+    setProductSelected(productFiltred)
+  }
+
   const [filters, setFilters] = useState({
     name: "",
     gender: "",
@@ -64,7 +71,7 @@ export const ProductProvider = ({children}) => {
       const response = await api.get(`/products?pagina=${page}&name=${filters.name}&category=${filters.category}&gender=${filters.gender}`)
 
       setProducts(response.data.data)
-      // console.log(response.data.data);
+      console.log(response.data.data);  
       setIsLoading(false)
     } catch (error) {
       console.log(error);
@@ -92,7 +99,10 @@ export const ProductProvider = ({children}) => {
         handleNameFilterChange,
         handleGenderFilterChange,
         handleCategoryFilterChange,
-        handleCleanFilterChange
+        handleCleanFilterChange,
+        productSelected,
+        handleProductSelected,
+        setProductSelected
         }}
       > 
       {children}

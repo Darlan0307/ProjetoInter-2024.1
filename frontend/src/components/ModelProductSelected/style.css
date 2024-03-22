@@ -1,0 +1,174 @@
+@import url(../../variables.css);
+
+.model-container-product{  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  place-content: center;
+}
+.container-product{
+  z-index: 1;
+  background-color: var(--bg-color);
+  padding: 20px;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: grid;
+  place-content: center;
+}
+
+
+.card-product-selected{
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.card-product-selected > img{
+  height: 200px;
+  width: min-content;
+  margin: 0 auto;
+  
+}
+
+.card-product-selected-info{
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  color: var(--font-color);
+}
+
+.title-product-selected{
+  color: var(--font-color);
+  font-size: 22px;
+}
+
+.price-product-selected{
+  font-size: 30px;
+  font-weight: bold;
+  color: black;
+}
+
+.amounts-product-selected{
+  display: flex;
+  justify-content: space-between;
+}
+
+.quantity-product-selected span,.gender-product-selected span{
+  font-weight: bold;
+  padding-right: 10px;
+  color: black;
+}
+
+.size-product-selected{
+  display: flex;
+  gap: 2em;
+}
+
+.size-product-selected > div{
+  display: flex;
+  align-items: center;
+  gap: .5em;
+}
+
+.size-product-selected > div > input{
+  height: 24px;
+  width: 24px;
+  accent-color: var(--primary-color);
+}
+.size-product-selected > div > label{
+  font-size: 16px;
+  color: black;
+}
+
+.description-product-selected{
+  height: 60px;
+  overflow-y: auto;
+}
+
+.add-cart{
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 10px;
+  font-size: 18px;
+  width:  fit-content;
+  padding: 10px;
+  cursor: pointer;
+  align-self: center;
+  display: flex;
+  gap: .5em;
+  align-items: center;
+}
+
+.add-cart svg{
+  fill: white;
+  font-size: 25px;
+}
+
+.close-container-product{
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.close-container-product svg{
+  fill: var(--primary-color);
+  font-size: 40px;
+}
+
+.close-model{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.295);
+  backdrop-filter: blur(6px);
+  z-index: -1;
+}
+
+@media (min-width:500px){
+  .container-product{
+    max-height: 550px;
+  }
+
+  .card-product-selected{
+    flex-direction: row;
+    align-items: center;
+    gap: 2em;
+  }
+
+  .card-product-selected-info{
+    gap: 1em;
+    padding: 0 10px;
+  }
+
+  .description-product-selected{
+    height: fit-content;
+  }
+}
+
+
+@media (min-width:600px){
+  .card-product-selected > img{
+    height: 300px;
+    width: 300px;
+  }
+}
+
+@media (min-width:700px){
+  .container-product{
+    max-width: 650px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  }
+}

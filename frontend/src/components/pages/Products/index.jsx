@@ -6,6 +6,8 @@ import './style.css'
 import { IoIosArrowDown,IoIosArrowUp,IoIosArrowBack,IoIosArrowForward } from "react-icons/io";
 import { FaRegSadCry } from "react-icons/fa";
 import { FaCirclePlus } from "react-icons/fa6";
+import { toast } from "react-toastify";
+import ModelProductSelected from '../../ModelProductSelected';
 const Products = () => {
 
   const isMobile = useMediaQuery({ query: '(max-width: 900px)' });
@@ -19,7 +21,8 @@ const Products = () => {
     handleNameFilterChange,
     handleGenderFilterChange,
     handleCategoryFilterChange,
-    handleCleanFilterChange
+    handleCleanFilterChange,
+    handleProductSelected
   } = useProduct()
 
   const [textProduct,setTextProduct] = useState("")
@@ -128,7 +131,11 @@ const Products = () => {
             {products.length > 0 ? (
               <>
               {products.map((product)=>(
-                <article className='card-product' key={product.id}>
+                <article className='card-product' key={product.id}
+                onClick={()=>{
+                  handleProductSelected(product.id)
+                }}
+                >
                   <img src={product.urlImage} alt={product.name} />
                   <h3>{product.name}</h3>
                   <span><FaCirclePlus/></span>
@@ -169,6 +176,7 @@ const Products = () => {
         )}
       </section>
 
+      <ModelProductSelected/>
     </main>
   )
 }
