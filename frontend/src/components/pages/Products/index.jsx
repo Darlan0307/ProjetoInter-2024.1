@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {useProduct} from '../../../context/ProductContext'
 import { useMediaQuery } from 'react-responsive';
 import './style.css'
 import { IoIosArrowDown,IoIosArrowUp,IoIosArrowBack,IoIosArrowForward } from "react-icons/io";
+import { FaRegSadCry } from "react-icons/fa";
 import { FaCirclePlus } from "react-icons/fa6";
 const Products = () => {
 
@@ -13,20 +14,46 @@ const Products = () => {
     page,
     nextPage,
     prevPage,
+    filters,
     handleNameFilterChange,
     handleGenderFilterChange,
-    handleCategoryFilterChange
+    handleCategoryFilterChange,
+    handleCleanFilterChange
   } = useProduct()
 
   const [textProduct,setTextProduct] = useState("")
   const [openFiltros,setOpenFiltros] = useState(!isMobile)
+
+  let timeoutId = null;
+
+  const handleSearchChange = (e) => {
+    setTextProduct(e.target.value);
+
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+
+    timeoutId = setTimeout(() => {
+      handleNameFilterChange(textProduct);
+    }, 1000);
+  };
+
+  useEffect(() => {
+    return () => clearTimeout(timeoutId);
+  }, []);
+
+  useEffect(() => {
+    timeoutId = setTimeout(() => {
+      handleNameFilterChange(textProduct);
+    }, 1000);
+  }, [textProduct]);
 
   return (
     <main className='products-page'>
       <section className='section-filter-product'>
         <input 
         type="text"
-        onChange={(e)=> setTextProduct(e.target.value)}
+        onChange={handleSearchChange}
         value={textProduct}
         className='input-search'
         placeholder='Buscar produto...'
@@ -50,16 +77,25 @@ const Products = () => {
 
               <div className='filter-gender'>
                 <div>
-                  <input type="radio" name='genero' id='masculino' value="M"/>
+                  <input type="radio" name='genero' id='masculino' value="M"
+                  onChange={(e)=>handleGenderFilterChange(e)}
+                  checked={filters.gender  === 'M' ? true : false}
+                  />
                   <label htmlFor="masculino">masculino</label>
                 </div>
                 <div>
-                  <input type="radio" name='genero' id='feminino' value="F"/>
+                  <input type="radio" name='genero' id='feminino' value="F"
+                  onChange={(e)=>handleGenderFilterChange(e)}
+                  checked={filters.gender  === 'F' ? true : false}
+                  />
                   <label htmlFor="feminino">feminino</label>
                 </div>
               </div>
 
-              <select className='selected-category-filter' value="">
+              <select className='selected-category-filter'
+              onChange={handleCategoryFilterChange}
+              value={filters.category}
+              >
                 <option value="" disabled selected>Categoria</option>
                 <option value="camiseta">camiseta</option>
                 <option value="blusa">blusa</option>
@@ -70,7 +106,12 @@ const Products = () => {
                 <option value="vestido">vestido</option>
               </select>
 
-              <button className='btn-clean-filtros'>Limpar Filtros</button>
+              <button className='btn-clean-filtros'
+              onClick={()=>{
+                handleCleanFilterChange()
+                setTextProduct("")
+              }}
+              >Limpar Filtros</button>
             </div>
           )
         }
@@ -82,31 +123,42 @@ const Products = () => {
           }</h2>
 
           <div className='cards-products'>
-            {products.map((product)=>(
-              <article className='card-product' key={product.id}>
-                <img src={product.urlImage} alt={product.name} />
-                <h3>{product.name}</h3>
-                <span><FaCirclePlus/></span>
-              </article>
-            ))}
+            {products.length > 0 ? (
+              <>
+              {products.map((product)=>(
+                <article className='card-product' key={product.id}>
+                  <img src={product.urlImage} alt={product.name} />
+                  <h3>{product.name}</h3>
+                  <span><FaCirclePlus/></span>
+                </article>
+              ))}
+              </>
+            ):(
+              <h3><span>Sem resultados</span> <FaRegSadCry/></h3>
+            )}
           </div>
       </section>
 
       <section className='section-pagination'>
-        <button 
-        className="custom-prev-button"
-        disabled = {page === 1? true: false}
-        >
-          <span>Anterior</span>
-          <IoIosArrowBack/>
+        {page > 1 && (
+          <button 
+          className="custom-prev-button"
+          onClick={prevPage}
+          >
+            <span>Anterior</span>
+            <IoIosArrowBack/>
         </button>
-        <button 
-        className="custom-next-button"
-        // disabled={products.length == 9 ? false : true}
-        >
-          <span>Próximo</span>
-          <IoIosArrowForward/>
-        </button>
+        )}
+          
+        {products.length > 8 && (
+          <button 
+          className="custom-next-button"
+          onClick={nextPage}
+          >
+            <span>Próximo</span>
+            <IoIosArrowForward/>
+          </button>
+        )}
       </section>
 
     </main>

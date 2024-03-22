@@ -21,18 +21,20 @@ export const ProductProvider = ({children}) => {
   }
 
   const prevPage = ()=>{
-    setPage(prevPage => prevPage + 1)
+    setPage(prevPage => prevPage - 1)
   }
 
   // Filtros
-  const handleNameFilterChange = (event) => {
+  const handleNameFilterChange = (text) => {
+    setPage(1)
     setFilters({
       ...filters,
-      name: event.target.value,
+      name: text,
     });
   };
 
   const handleGenderFilterChange = (event) => {
+    setPage(1)
     setFilters({
       ...filters,
       gender: event.target.value,
@@ -40,9 +42,18 @@ export const ProductProvider = ({children}) => {
   };
 
   const handleCategoryFilterChange = (event) => {
+    setPage(1)
     setFilters({
       ...filters,
       category: event.target.value,
+    });
+  };
+
+  const handleCleanFilterChange = () => {
+    setFilters({
+      name: "",
+      gender: "",
+      category: ""
     });
   };
 
@@ -53,7 +64,7 @@ export const ProductProvider = ({children}) => {
       const response = await api.get(`/products?pagina=${page}&name=${filters.name}&category=${filters.category}&gender=${filters.gender}`)
 
       setProducts(response.data.data)
-      console.log(response.data.data);
+      // console.log(response.data.data);
       setIsLoading(false)
     } catch (error) {
       console.log(error);
@@ -70,7 +81,6 @@ export const ProductProvider = ({children}) => {
     fetchData(filtersMemo);
   },[page,filtersMemo])
 
-
   return (
     <ProductContext.Provider 
       value={{
@@ -78,9 +88,11 @@ export const ProductProvider = ({children}) => {
         page,
         nextPage,
         prevPage,
+        filters,
         handleNameFilterChange,
         handleGenderFilterChange,
-        handleCategoryFilterChange
+        handleCategoryFilterChange,
+        handleCleanFilterChange
         }}
       > 
       {children}
