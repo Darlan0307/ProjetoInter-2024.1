@@ -1,5 +1,6 @@
 import { prisma } from "../services/prisma.js";
 import bcrypt from 'bcryptjs'
+import jsonwebtoken from "jsonwebtoken";
 
 export class UserController{
 
@@ -19,7 +20,7 @@ export class UserController{
        // Criptografando a senha
        const hash_password = (await bcrypt.hash(password,8)).toString()
 
-       await prisma.user.create({
+       const newUser = await prisma.user.create({
          data :{
            name,
            email,
@@ -28,7 +29,13 @@ export class UserController{
          }
        })
 
-       return res.status(201).json("Usuário criado com sucesso")
+      const secret = process.env.SECRET
+
+      const token = jsonwebtoken.sign({id:newUser.id},`${secret}`,{expiresIn:"1d"})
+
+      const {id} = newUser
+
+      res.status(201).json({user:{id,email,admin},token})
     } catch (error) {
       console.log(error);
       res.status(400).json({msg:"Error ao tentar acessar o banco de dados"});
