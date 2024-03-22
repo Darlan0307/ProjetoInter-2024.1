@@ -55,7 +55,6 @@ export class ProductController{
       const category = req.query.category || "";
       const gender = req.query.gender || "";
       
-
       const  products = await prisma.product.findMany({
         skip: (pagina - 1) * limite,
         take: limite,
