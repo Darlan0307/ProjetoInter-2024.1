@@ -1,4 +1,4 @@
-![Logo do projeto](https://i.imgur.com/kniMQHu.png)
+![Logo do projeto](./frontend/src/assets/img-project.png)
 
 # Nome do Projeto
 
