@@ -49,7 +49,31 @@ export class ProductController{
 
   async getAllProducts(req,res){
     try {
-      const  products = await prisma.product.findMany()
+      const pagina = parseInt(req.query.pagina) || 1;
+      const limite = parseInt(req.query.limite) || 10;
+      const name =   req.query.name || "";
+      const category = req.query.category || "";
+      const gender = req.query.gender || "";
+      
+
+      const  products = await prisma.product.findMany({
+        skip: (pagina - 1) * limite,
+        take: limite,
+        where:{
+          name: {
+            contains: name,
+            mode:"insensitive"
+          },
+          gender:{
+            contains: gender,
+            mode:"insensitive"
+          },
+          category:{
+            contains: category,
+            mode:"insensitive"
+          }
+        }
+      })
 
       res.status(200).json({data:products})
     } catch (error) {
