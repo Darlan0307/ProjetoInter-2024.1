@@ -6,7 +6,6 @@
   flex-direction: column;
   gap: 3em;
   position: relative;
-
 }
 
 .carousel-subtitle{
@@ -26,8 +25,9 @@
   justify-content: center;
   align-items: center;
   gap: 4em;
-  padding: 20px 10px;
-  height: 320px;
+  padding: 10px;
+  min-height: 450px;
+  justify-content: space-evenly;
 }
 
 .image-card-category{
@@ -39,6 +39,7 @@
 .content-card{
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   gap: 2em;
 }
 
@@ -131,16 +132,13 @@
 
 @media (max-width:750px){
 
-  .card-category{
-    height: fit-content;
-  }
-
   .image-card-category{
     transform: none;
   }
   .card-category{
     flex-direction: column;
     gap: 0;
+    min-height: 600px;
   }
 
   .content-card{

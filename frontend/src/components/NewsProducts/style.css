@@ -33,6 +33,13 @@
   min-height: 250px;
 }
 
+@media (max-width:400px) {
+  .new-product{
+    flex-direction: column-reverse;
+    padding: 5px;
+  }
+}
+
 .new-product-content h3,.new-product-content p{
   color: var(--font-color);
   text-align: center;
