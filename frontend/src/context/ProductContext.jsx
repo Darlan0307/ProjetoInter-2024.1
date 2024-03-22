@@ -11,9 +11,18 @@ export const ProductProvider = ({children}) => {
   const [products, setProducts] = useState([])
   const [filters, setFilters] = useState({
     name: "",
-    genre: "",
-    category: "",
+    gender: "",
+    category: ""
   });
+  const [page,setPage] = useState(1)
+
+  const nextPage = ()=>{
+    setPage(prevPage => prevPage + 1 )
+  }
+
+  const prevPage = ()=>{
+    setPage(prevPage => prevPage + 1)
+  }
 
   // Filtros
   const handleNameFilterChange = (text) => {
@@ -23,10 +32,10 @@ export const ProductProvider = ({children}) => {
     });
   };
 
-  const handleGenreFilterChange = (event) => {
+  const handleGenderFilterChange = (event) => {
     setFilters({
       ...filters,
-      genre: event.target.value,
+      gender: event.target.value,
     });
   };
 
@@ -37,24 +46,14 @@ export const ProductProvider = ({children}) => {
     });
   };
 
-  const filterProducts = () => {
-    const { name, genre, category } = filters;
-    return products.filter((product) => {
-      return (
-        product.name.toLowerCase().includes(name.toLowerCase()) &&
-        (genre === "" || product.genre === genre) &&
-        (category === "" || product.category === category)
-      );
-    });
-  };
 
-  const fetchData =  async () => {
+  const fetchData =  async (filters) => {
     try {
       setIsLoading(true)
-      const response = await api.get('/products')
+      const response = await api.get(`/products?pagina=${page}&name=${filters.name}&category=${filters.category}&gender=${filters.gender}`)
 
       setProducts(response.data.data)
-      // console.log(response.data.data);
+      console.log(response.data.data);
       setIsLoading(false)
     } catch (error) {
       console.log(error);
@@ -62,17 +61,19 @@ export const ProductProvider = ({children}) => {
   }
 
   useEffect(()=>{
-    fetchData()
-  },[])
+    fetchData(filters)
+  },[page,filters])
 
 
   return (
     <ProductContext.Provider 
       value={{
         products,
-        filterProducts,
+        page,
+        nextPage,
+        prevPage,
         handleNameFilterChange,
-        handleGenreFilterChange,
+        handleGenreFilterChange: handleGenderFilterChange,
         handleCategoryFilterChange
         }}
       > 

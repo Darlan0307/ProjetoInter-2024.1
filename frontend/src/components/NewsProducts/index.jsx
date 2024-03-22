@@ -13,7 +13,7 @@ const NewsProducts = () => {
 
   return (
     <section className='news-products'>
-      <h2 className='news-products-title'>Novidades</h2>
+      <h2 className='news-products-title'>Mais Vendidos</h2>
       <div className='product-container'>
         <article className='new-product'>
           <div className='new-product-content'>
