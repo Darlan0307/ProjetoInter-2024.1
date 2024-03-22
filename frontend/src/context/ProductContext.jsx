@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { api } from '../services/api'
 import { useLoader } from "./LoaderContext";
 
@@ -60,9 +60,15 @@ export const ProductProvider = ({children}) => {
     }
   }
 
+  const filtersMemo = useMemo(() => ({
+    name: filters.name,
+    gender: filters.gender,
+    category: filters.category,
+  }), [filters]);
+
   useEffect(()=>{
-    fetchData(filters)
-  },[page,filters])
+    fetchData(filtersMemo);
+  },[page,filtersMemo])
 
 
   return (

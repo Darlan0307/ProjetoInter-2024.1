@@ -14,7 +14,8 @@ const EcommerceRoutes = () => {
         <Route index element={<Home/>}/>
         <Route path='/cart' element={<h1>Cart</h1>}/>
         <Route path='/products' element={<h1>Produtos</h1>}/>
-        <Route path='/products/:id' element={<h1>Produto selected</h1>}/>
+        <Route path='/location' element={<h1>Localização</h1>}/>
+        <Route path='/popular' element={<h1>mais vendidos</h1>}/>
         <Route path='/signin' element={<SignIn/>}/>
         <Route path='/signup' element={<SignUp/>}/>
         <Route path='*' element={<h1>Page 404 not found</h1>}/>
