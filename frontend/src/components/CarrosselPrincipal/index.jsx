@@ -2,7 +2,6 @@ import './style.css'
 import { Swiper, SwiperSlide,useSwiper } from 'swiper/react'
 import { Link } from 'react-router-dom'
 import { CiBookmarkPlus } from "react-icons/ci";
-import { IoIosArrowBack,IoIosArrowForward } from "react-icons/io";
 
 // Imagens carrossel
 import camiseta from '../../assets/camisa-1.png'
@@ -69,12 +68,6 @@ const CarrosselPrincipal = () => {
             </article>
           </SwiperSlide>
         ))}
-
-          
-        {/* <div className="action-carousel">
-        <button className="custom-prev-button" onClick={() => swiper?.slidePrev()}><IoIosArrowBack/></button>
-        <button className="custom-next-button" onClick={() => swiper?.slideNext()}> <IoIosArrowForward/> </button>
-        </div> */}
       </Swiper>
     </section>
   )

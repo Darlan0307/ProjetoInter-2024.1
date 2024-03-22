@@ -2,8 +2,8 @@ import { useState } from 'react'
 import {useProduct} from '../../../context/ProductContext'
 
 import './style.css'
-import { IoIosArrowDown,IoIosArrowUp } from "react-icons/io";
-
+import { IoIosArrowDown,IoIosArrowUp,IoIosArrowBack,IoIosArrowForward } from "react-icons/io";
+import { FaCirclePlus } from "react-icons/fa6";
 const Products = () => {
 
   const {
@@ -69,9 +69,38 @@ const Products = () => {
           )
         }
       </section>
-
+          
       <section className='section-products-filtred'>
+          <h2 className='section-products-subtitle'>{
+            textProduct ? `Resultados para  "${textProduct}"` : 'Todos os produtos'
+          }</h2>
 
+          <div className='cards-products'>
+            {products.map((product)=>(
+              <article className='card-product' key={product._id}>
+                <img src={product.urlImage} alt={product.name} />
+                <h3>{product.name}</h3>
+                <span><FaCirclePlus/></span>
+              </article>
+            ))}
+          </div>
+      </section>
+
+      <section className='section-pagination'>
+        <button 
+        className="custom-prev-button"
+        disabled = {page === 1? true: false}
+        >
+          <span>Anterior</span>
+          <IoIosArrowBack/>
+        </button>
+        <button 
+        className="custom-next-button"
+        // disabled={products.length == 9 ? false : true}
+        >
+          <span>Próximo</span>
+          <IoIosArrowForward/>
+        </button>
       </section>
 
     </main>

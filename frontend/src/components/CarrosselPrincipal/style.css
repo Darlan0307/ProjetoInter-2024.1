@@ -90,45 +90,7 @@
   font-weight: bold;
 }
 
-.action-carousel{
- padding: 10px;
- display: flex;
- gap: 1em;
- justify-content: flex-end;
-}
 
-.action-carousel button{
-  border: none;
-  cursor: pointer;
-  padding: 5px 10px;
-  border-radius: 10px;
-  transition: all .3s;
-}
-
-.action-carousel button:active{
-  transform: scale(.5);
-}
-
-.action-carousel button svg{
-  font-size: 35px;
-  color: white;
-}
-
-.action-carousel .custom-prev-button{
-  border: 1px solid var(--primary-color);
-}
-
-.action-carousel .custom-prev-button svg{
-  color: var(--primary-color);
-}
-
-.action-carousel .custom-next-button{
-  background-color: var(--primary-color);
-}
-
-.action-carousel .custom-next-button svg{
-  color: white;
-}
 
 @media (max-width:750px){
 
@@ -143,11 +105,5 @@
 
   .content-card{
     gap: 1em;
-  }
-}
-
-@media (min-width:751px){
-  .action-carousel{
-    margin-right: 10%;
   }
 }
