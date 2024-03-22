@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import {useProduct} from '../../../context/ProductContext'
 import { useMediaQuery } from 'react-responsive';
+import { MoveToTop } from '../../../utils/MoveToTop'
 import './style.css'
 import { IoIosArrowDown,IoIosArrowUp,IoIosArrowBack,IoIosArrowForward } from "react-icons/io";
 import { FaRegSadCry } from "react-icons/fa";
@@ -39,6 +40,7 @@ const Products = () => {
   };
 
   useEffect(() => {
+    MoveToTop()
     return () => clearTimeout(timeoutId);
   }, []);
 
@@ -143,7 +145,10 @@ const Products = () => {
         {page > 1 && (
           <button 
           className="custom-prev-button"
-          onClick={prevPage}
+          onClick={()=>{
+            MoveToTop()
+            prevPage()
+          }}
           >
             <span>Anterior</span>
             <IoIosArrowBack/>
@@ -153,7 +158,10 @@ const Products = () => {
         {products.length > 8 && (
           <button 
           className="custom-next-button"
-          onClick={nextPage}
+          onClick={()=>{
+            MoveToTop()
+            nextPage()
+          }}
           >
             <span>Próximo</span>
             <IoIosArrowForward/>

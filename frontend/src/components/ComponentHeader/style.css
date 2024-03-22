@@ -16,7 +16,8 @@ svg{
 
 .logo{
   width: 90px;
- transition: all .6s;
+  transition: all .6s;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .logo:hover{

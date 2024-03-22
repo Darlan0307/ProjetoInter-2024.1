@@ -1,15 +1,22 @@
 import './styles.css'
 import imgIlustration from "../../../assets/img-signin.png"
 import { Link } from 'react-router-dom'
+import { MoveToTop } from '../../../utils/MoveToTop'
+import { useEffect } from 'react'
 
 const SignIn = () => {
+
+  useEffect(()=>{
+    MoveToTop()
+  },[])
+
   return (
-    <main className='signup'>
+    <main className='signin'>
       <img src={imgIlustration} alt="ilustração de uma pessoa na janela" />
-      <div className='content-signup'>
+      <div className='content-signin'>
         <h2>Faça login</h2>
         <p>Para ter acesso a todos os nossos recursos</p>
-        <form className='form-signup' autoComplete='off'>
+        <form className='form-signin' autoComplete='off'>
           <div className='wrap-input'>  
             <input type="email" className='input' id='email' min={10} required/>
             <label className='label' htmlFor="email">Email</label>

@@ -1,12 +1,14 @@
 import './style.css'
 import { Link } from 'react-router-dom'
-
+import { MoveToTop } from '../../../utils/MoveToTop'
 import imgIlustration from '../../../assets/img-signup.png'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ValidateFormUser } from '../../../utils/ValidateFormUser'
 import InputField from '../../ui/Input'
 
 const SignUp = () => {
+
+
 
   const [name,setName] = useState('')
   const [email,setEmail] = useState('')
@@ -41,6 +43,10 @@ const SignUp = () => {
 
     // Enviar ao banco de dados
   }
+
+  useEffect(()=>{
+    MoveToTop()
+  },[])
 
   return (
     <main className='signup'>
