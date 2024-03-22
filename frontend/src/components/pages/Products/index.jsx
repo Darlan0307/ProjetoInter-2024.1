@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import {useProduct} from '../../../context/ProductContext'
-
+import { useMediaQuery } from 'react-responsive';
 import './style.css'
 import { IoIosArrowDown,IoIosArrowUp,IoIosArrowBack,IoIosArrowForward } from "react-icons/io";
 import { FaCirclePlus } from "react-icons/fa6";
 const Products = () => {
+
+  const isMobile = useMediaQuery({ query: '(max-width: 900px)' });
 
   const {
     products,
@@ -17,7 +19,7 @@ const Products = () => {
   } = useProduct()
 
   const [textProduct,setTextProduct] = useState("")
-  const [openFiltros,setOpenFiltros] = useState(false)
+  const [openFiltros,setOpenFiltros] = useState(!isMobile)
 
   return (
     <main className='products-page'>
@@ -30,13 +32,17 @@ const Products = () => {
         placeholder='Buscar produto...'
         />
 
-        <button 
+        {
+          isMobile && (
+            <button 
         className='btn-view-filtros'
         onClick={()=> setOpenFiltros( !openFiltros )}
         >
           <span>Ver mais filtros</span> 
           {openFiltros ? <IoIosArrowUp/>: <IoIosArrowDown/>}
         </button>
+          )
+        }
 
         {
           openFiltros && (
@@ -53,7 +59,7 @@ const Products = () => {
                 </div>
               </div>
 
-              <select className='selected-category-filter'>
+              <select className='selected-category-filter' value="">
                 <option value="" disabled selected>Categoria</option>
                 <option value="camiseta">camiseta</option>
                 <option value="blusa">blusa</option>
@@ -77,7 +83,7 @@ const Products = () => {
 
           <div className='cards-products'>
             {products.map((product)=>(
-              <article className='card-product' key={product._id}>
+              <article className='card-product' key={product.id}>
                 <img src={product.urlImage} alt={product.name} />
                 <h3>{product.name}</h3>
                 <span><FaCirclePlus/></span>
