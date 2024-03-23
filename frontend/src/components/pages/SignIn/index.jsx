@@ -4,18 +4,28 @@ import { Link } from 'react-router-dom'
 import { MoveToTop } from '../../../utils/MoveToTop'
 import { useEffect, useState } from 'react'
 import InputField from '../../ui/Input'
-
+import { useAuth } from '../../../context/AuthContext'
+import { useNavigate } from "react-router-dom";
 const SignIn = () => {
 
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
-
+  const navigation = useNavigate()
+  const {authenticateUser} = useAuth()
 
   useEffect(()=>{
     MoveToTop()
   },[])
 
-
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    try {
+      authenticateUser({email, password})
+      navigation("/")
+    } catch (error) {
+      console.log(error);
+    }
+  }
   
   return (
     <main className='signin'>
@@ -23,7 +33,7 @@ const SignIn = () => {
       <div className='content-signin'>
         <h2>Faça login</h2>
         <p>Para ter acesso a todos os nossos recursos</p>
-        <form className='form-signin' autoComplete='off'>
+        <form className='form-signin' autoComplete='off' onSubmit={handleSubmit}>
           <InputField
           id="email"
           type="text"

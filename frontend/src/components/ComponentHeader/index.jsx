@@ -4,11 +4,19 @@ import { useMediaQuery } from 'react-responsive';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { TiThMenu } from "react-icons/ti";
-import { IoIosCloseCircle } from "react-icons/io";
+import { IoIosCloseCircle,IoMdExit } from "react-icons/io";
 import { CiUser } from "react-icons/ci";
 import { BsHandbag } from "react-icons/bs";
+import { useAuth } from '../../context/AuthContext';
 
 const ComponentHeader = () => {
+
+  const {
+    signed,
+    userIsAdm,
+    signOut
+  } = useAuth()
+
 
   const isMobile = useMediaQuery({ query: '(max-width: 900px)' });
 
@@ -46,11 +54,11 @@ const ComponentHeader = () => {
           <li>
             <Link to="/">Home</Link>
           </li>
-          {/* {
-            visible && <li>
+          {
+            userIsAdm && <li>
             <Link to="/adm">ADM</Link>
           </li>
-          } */}
+          }
           <li>
             <Link to="/popular">Mais Vendidos</Link>
           </li>
@@ -64,11 +72,24 @@ const ComponentHeader = () => {
       </nav>
 
       <div className='actions-user'>
+
         
-        <Link to="/signin" className='login-user'>
-          <CiUser/>
-          <span>text</span>
-        </Link>
+
+        {
+          signed ? (
+            <Link to="/" className='login-user' onClick={signOut}>
+              <IoMdExit/>
+              <span>Sair</span>
+            </Link>
+          ):(
+          <Link to="/signin" className='login-user'>
+            <CiUser/>
+            <span>Login</span>
+          </Link>
+          )
+        }
+        
+        
         
         <Link to="/cart" className='cart'>
           <BsHandbag/>

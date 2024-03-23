@@ -7,7 +7,7 @@ import { ValidateFormUser } from '../../../utils/ValidateFormUser'
 import InputField from '../../ui/Input'
 import { toast } from 'react-toastify'
 import { useAuth } from '../../../context/AuthContext'
-
+import { useNavigate } from "react-router-dom";
 const SignUp = () => {
 
   const { registerUser } = useAuth()
@@ -18,6 +18,8 @@ const SignUp = () => {
   const [confirmPassword,setConfirmPassword] = useState('')
 
   const [erros,setErros] = useState(null)
+
+  const navigation = useNavigate()
 
   const handleSubmit = async(event) => {
     event.preventDefault();
@@ -45,6 +47,7 @@ const SignUp = () => {
     setConfirmPassword('')
 
     registerUser(userData)
+    navigation("/")
     } catch (error) {
       console.log(error);
     }

@@ -70,8 +70,7 @@ export const ProductProvider = ({children}) => {
       setIsLoading(true)
       const response = await api.get(`/products?pagina=${page}&name=${filters.name}&category=${filters.category}&gender=${filters.gender}`)
 
-      setProducts(response.data.data)
-      console.log(response.data.data);  
+      setProducts(response.data.data)  
       setIsLoading(false)
     } catch (error) {
       console.log(error);

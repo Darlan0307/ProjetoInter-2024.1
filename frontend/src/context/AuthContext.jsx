@@ -3,25 +3,29 @@ import { useLoader } from "./LoaderContext";
 import { api } from '../services/api'
 import { toast } from 'react-toastify'
 
+
 export const AuthContext = createContext({})
 
 export const AuthProvider = ({children}) => {
 
   const {setIsLoading} = useLoader()
   const [user, setUser] = useState(null)
+  const [userIsAdm, setUserIsAdmin] = useState(false)
+  
 
   // Buscando token no localstorage se houver
-  // useEffect(() => {
-  //   const loadingStoreData = () => {
-  //     const storageUser = localStorage.getItem("@Auth:user");
-  //     const storageToken = localStorage.getItem("@Auth:token");
+  useEffect(() => {
+    const loadingStoreData = () => {
+      const storageUser = JSON.parse(localStorage.getItem("@Auth:user"));
+      const storageToken = localStorage.getItem("@Auth:token");
 
-  //     if (storageUser && storageToken) {
-  //       setUser(storageUser);
-  //     }
-  //   };
-  //   loadingStoreData();
-  // }, []);
+      if (storageUser && storageToken) {
+        setUser(storageUser);
+        setUserIsAdmin(storageUser.admin)
+      }
+    };
+    loadingStoreData();
+  }, []);
 
   const salveDataLocalStorage = (data) =>{
     api.defaults.headers.common[
@@ -38,11 +42,13 @@ export const AuthProvider = ({children}) => {
       const response = await api.post("/user",{name,email,password})
 
       setUser(response.data)
+      setUserIsAdmin(response.data.user.admin)
       salveDataLocalStorage(response.data)
-      console.log(response.data);
+      toast.success("Cadastrado com sucesso!")
     } catch (error) {
       console.log(error);
       toast.error("Error no cadastro");
+      // toast.error(error.response.data.message);
     }finally{
       setIsLoading(false)
     }
@@ -53,16 +59,13 @@ export const AuthProvider = ({children}) => {
     try {
       const response = await api.post("/auth",{email,password})
 
-      console.log(response.data);
-      // setUser(response.data)
+      setUser(response.data)
+      salveDataLocalStorage(response.data)
+      setUserIsAdmin(response.data.user.admin)
+      toast.success("Logado com sucesso!")
 
-      
-
-      // toast.success("Logado com sucesso!")
     } catch (error) {
-      console.log(error);
-      toast.error("Error na authenticação");
-     
+      toast.error(error.response.data.message);
     }finally{
       setTimeout(()=>{
         setIsLoading(false)
@@ -75,6 +78,8 @@ export const AuthProvider = ({children}) => {
     localStorage.removeItem("@Auth:user");
     localStorage.removeItem("@Auth:token");
     setUser(null)
+    setUserIsAdmin(false)
+    toast.success( "Deslogado com Sucesso!");
   }
 
   return(
@@ -82,6 +87,7 @@ export const AuthProvider = ({children}) => {
     value={{
       user,
       signed:!!user,
+      userIsAdm,
       authenticateUser,
       registerUser,
       signOut
