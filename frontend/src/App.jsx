@@ -1,4 +1,5 @@
 import EcommerceRoutes from "./components/EcommerceRoutes"
+import { AuthProvider } from "./context/AuthContext"
 import { LoaderProvider } from "./context/LoaderContext"
 import { ProductProvider } from "./context/ProductContext"
 import { ToastContainer } from 'react-toastify'
@@ -9,12 +10,14 @@ function App() {
   return (
     <>
       <LoaderProvider>
+        <AuthProvider>
         <ProductProvider>
           <>
-            <ToastContainer autoClose={3000} position={"bottom-right"}/>
+            <ToastContainer autoClose={3000} position={"bottom-left"}/>
             <EcommerceRoutes/>
           </>
         </ProductProvider>
+        </AuthProvider>
       </LoaderProvider>
     </>
   )

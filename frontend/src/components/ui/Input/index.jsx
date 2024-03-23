@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import './style.css'
 
 const InputField = ({
   id,

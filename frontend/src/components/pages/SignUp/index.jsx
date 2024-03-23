@@ -5,10 +5,12 @@ import imgIlustration from '../../../assets/img-signup.png'
 import { useEffect, useState } from 'react'
 import { ValidateFormUser } from '../../../utils/ValidateFormUser'
 import InputField from '../../ui/Input'
+import { toast } from 'react-toastify'
+import { useAuth } from '../../../context/AuthContext'
 
 const SignUp = () => {
 
-
+  const { registerUser } = useAuth()
 
   const [name,setName] = useState('')
   const [email,setEmail] = useState('')
@@ -17,9 +19,10 @@ const SignUp = () => {
 
   const [erros,setErros] = useState(null)
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
-    setErros(null)
+    try {
+      setErros(null)
 
     const userData = {
       name,
@@ -32,7 +35,7 @@ const SignUp = () => {
 
     if(Object.keys(objErros).length > 0){
       setErros(objErros)
-      // toast.warn("Preencha todos os campos corretamente")
+      toast.warn("Preencha todos os campos corretamente")
       return;
     }
 
@@ -41,7 +44,10 @@ const SignUp = () => {
     setPassword('')
     setConfirmPassword('')
 
-    // Enviar ao banco de dados
+    registerUser(userData)
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   useEffect(()=>{
