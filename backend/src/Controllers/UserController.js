@@ -35,7 +35,7 @@ export class UserController{
 
       const {id} = newUser
 
-      res.status(201).json({user:{id,email,admin},token})
+      res.status(201).json({user:{id,name,email,admin:newUser.admin},token})
     } catch (error) {
       console.log(error);
       res.status(400).json({msg:"Error ao tentar acessar o banco de dados"});

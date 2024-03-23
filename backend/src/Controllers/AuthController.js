@@ -21,9 +21,9 @@ export class AuthController{
 
       const token = jsonwebtoken.sign({id:userExists.id},`${secret}`,{expiresIn:"1d"})
 
-      const {id,admin} = userExists
+      const {id,name,admin} = userExists
 
-      res.status(200).json({user:{id,email,admin},token})
+      res.status(200).json({user:{id,name,email,admin},token})
 
     } catch (error) {
       res.status(400).json({msg:"Error ao tentar acessar o banco de dados"});
