@@ -23,7 +23,6 @@ const SignUp = () => {
 
   const handleSubmit = async(event) => {
     event.preventDefault();
-    try {
       setErros(null)
 
     const userData = {
@@ -46,11 +45,9 @@ const SignUp = () => {
     setPassword('')
     setConfirmPassword('')
 
-    registerUser(userData)
-    navigation("/")
-    } catch (error) {
-      console.log(error);
-    }
+    const sucess = await registerUser(userData)
+    
+    if(sucess) navigation("/");
   }
 
   useEffect(()=>{

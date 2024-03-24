@@ -3,6 +3,8 @@ import Home from './pages/Home'
 import ComponentHeader from './ComponentHeader'
 import Loader from './Loader'
 import React from 'react'
+import PrivateRouter from './PrivateRoute'
+import PrivateRouterAdm from './PrivateRouteAdm'
 
 // Lazy loading
 const LazyLoader = () => {
@@ -21,6 +23,7 @@ const LazyLoader = () => {
 const Products = React.lazy(() => import('./pages/Products'))
 const SignIn = React.lazy(() => import('./pages/SignIn'))
 const SignUp =  React.lazy(()=> import('./pages/SignUp'))
+const Admin = React.lazy(()=>import("./pages/Admin"))
 
 const EcommerceRoutes = () => {
   return (
@@ -28,7 +31,11 @@ const EcommerceRoutes = () => {
       <ComponentHeader/>
       <Routes>
         <Route index element={<Home/>}/>
-        <Route path='/cart' element={<h1>Cart</h1>}/>
+        
+        <Route path='/cart' element={<PrivateRouter/>}>
+          <Route path='/cart' element={<h1>CART</h1>}/>
+        </Route>
+
         <Route path='/products' element={
           <React.Suspense fallback={<LazyLoader/>}>
             <Products/>
@@ -36,16 +43,26 @@ const EcommerceRoutes = () => {
         }/>
         <Route path='/location' element={<h1>Localização</h1>}/>
         <Route path='/popular' element={<h1>mais vendidos</h1>}/>
+
         <Route path='/signin' element={
           <React.Suspense fallback={<LazyLoader/>}>
             <SignIn/>
           </React.Suspense>
         }/>
+
         <Route path='/signup' element={
           <React.Suspense fallback={<LazyLoader/>}>
             <SignUp/>
           </React.Suspense>
         }/>
+
+        <Route path='/adm' element={<PrivateRouterAdm/>}>
+          <Route path='/adm' element={
+            <React.Suspense fallback={<LazyLoader/>}>
+              <Admin/>
+            </React.Suspense>
+          }/>
+        </Route>
         <Route path='*' element={<h1>Page 404 not found</h1>}/>
       </Routes>
 

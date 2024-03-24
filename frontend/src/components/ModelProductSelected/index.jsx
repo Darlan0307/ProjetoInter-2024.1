@@ -3,12 +3,20 @@ import  './style.css'
 import { toast } from "react-toastify";
 import { IoIosCloseCircle } from "react-icons/io";
 import { FaCartArrowDown } from "react-icons/fa";
+import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from "react-router-dom";
 const ModelProductSelected = () => {
 
   const {
     productSelected,
     setProductSelected
   } = useProduct()
+
+  const {
+    signed
+  } = useAuth()
+
+  const navigation = useNavigate()
 
   return (
     productSelected && (
@@ -45,7 +53,16 @@ const ModelProductSelected = () => {
             <p className='description-product-selected'>{productSelected.description}
             </p>
             <button className='add-cart'
-            onClick={()=>setProductSelected(null)}
+            onClick={()=>{
+              setProductSelected(null)
+              if(!signed){
+                toast.warn("Faça Login primeiro")
+                navigation("/signin")
+                return;
+              }
+
+              toast.warn("Produto adicionado ao carrinho")
+            }}
             ><span>Adicionar ao carrinho</span> <FaCartArrowDown/></button>
           </div>
         </article>

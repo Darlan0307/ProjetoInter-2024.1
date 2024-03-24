@@ -3,7 +3,6 @@ import { useLoader } from "./LoaderContext";
 import { api } from '../services/api'
 import { toast } from 'react-toastify'
 
-
 export const AuthContext = createContext({})
 
 export const AuthProvider = ({children}) => {
@@ -45,10 +44,10 @@ export const AuthProvider = ({children}) => {
       setUserIsAdmin(response.data.user.admin)
       salveDataLocalStorage(response.data)
       toast.success("Cadastrado com sucesso!")
+      return true
     } catch (error) {
-      console.log(error);
-      toast.error("Error no cadastro");
-      // toast.error(error.response.data.message);
+      toast.error(error.response.data.message);
+      return false
     }finally{
       setIsLoading(false)
     }
@@ -63,9 +62,10 @@ export const AuthProvider = ({children}) => {
       salveDataLocalStorage(response.data)
       setUserIsAdmin(response.data.user.admin)
       toast.success("Logado com sucesso!")
-
+      return true
     } catch (error) {
       toast.error(error.response.data.message);
+      return false
     }finally{
       setTimeout(()=>{
         setIsLoading(false)

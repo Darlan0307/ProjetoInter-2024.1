@@ -17,14 +17,13 @@ const SignIn = () => {
     MoveToTop()
   },[])
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault()
-    try {
-      authenticateUser({email, password})
-      navigation("/")
-    } catch (error) {
-      console.log(error);
-    }
+  
+    const sucess = await authenticateUser({email, password})
+    
+    if (sucess) navigation("/");
+ 
   }
   
   return (
