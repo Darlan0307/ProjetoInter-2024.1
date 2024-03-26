@@ -80,18 +80,18 @@ export const ProductProvider = ({children}) => {
       setProducts(response.data.data)  
       setIsLoading(false)
     } catch (error) {
-      console.log(error);
-      toast.warn(error.response.data.error)
+      toast.warn("Error ao tentar se conectar ao servidor")
     }
   }
 
   const updateProduct = async(id,{name,description,category,gender,price,quantity}) => {
     try {
-      const response = await api.put(`product/${id}`,{name,description,category,gender,price,quantity})
+      await api.put(`product/${id}`,{name,description,category,gender,price,quantity})
 
       toast.success('Produto atualizado com sucesso!')
     } catch (error) {
       console.log(error);
+      toast.warn(error.response.data.error)
     }
   }
 
