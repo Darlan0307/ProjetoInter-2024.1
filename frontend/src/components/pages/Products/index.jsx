@@ -3,20 +3,18 @@ import {useProduct} from '../../../context/ProductContext'
 import { useMediaQuery } from 'react-responsive';
 import { MoveToTop } from '../../../utils/MoveToTop'
 import './style.css'
-import { IoIosArrowDown,IoIosArrowUp,IoIosArrowBack,IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowDown,IoIosArrowUp} from "react-icons/io";
 import { FaRegSadCry } from "react-icons/fa";
 import { FaCirclePlus } from "react-icons/fa6";
-import { toast } from "react-toastify";
 import ModelProductSelected from '../../ModelProductSelected';
+import PaginationProducts from '../../ui/PaginationProducts';
+import InputSearch from '../../ui/InputSearch';
 const Products = () => {
 
   const isMobile = useMediaQuery({ query: '(max-width: 900px)' });
 
   const {
     products,
-    page,
-    nextPage,
-    prevPage,
     filters,
     handleNameFilterChange,
     handleGenderFilterChange,
@@ -56,7 +54,8 @@ const Products = () => {
   return (
     <main className='products-page'>
       <section className='section-filter-product'>
-        <input 
+
+        <InputSearch
         type="text"
         onChange={handleSearchChange}
         value={textProduct}
@@ -148,33 +147,7 @@ const Products = () => {
           </div>
       </section>
 
-      <section className='section-pagination'>
-        {page > 1 && (
-          <button 
-          className="custom-prev-button"
-          onClick={()=>{
-            MoveToTop()
-            prevPage()
-          }}
-          >
-            <span>Anterior</span>
-            <IoIosArrowBack/>
-        </button>
-        )}
-          
-        {products.length > 8 && (
-          <button 
-          className="custom-next-button"
-          onClick={()=>{
-            MoveToTop()
-            nextPage()
-          }}
-          >
-            <span>Próximo</span>
-            <IoIosArrowForward/>
-          </button>
-        )}
-      </section>
+      <PaginationProducts/>
 
       <ModelProductSelected/>
     </main>

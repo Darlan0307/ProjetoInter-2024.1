@@ -1,0 +1,17 @@
+@import url(../../../variables.css);
+
+.input-search{
+  outline: none;
+  border: 1px solid var(--font-color);
+  background-color: transparent;
+  border-radius: 15px;
+  font-size: 16px;
+  width: 100%;
+  max-width: 350px;
+  padding: 10px 15px;
+  transition: all .6s ease-in-out;
+}
+
+.input-search:focus{
+  border-color: var(--primary-color);
+}

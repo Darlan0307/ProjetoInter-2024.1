@@ -1,8 +1,88 @@
 import './style.css'
+import InputSearch from '../../ui/InputSearch';
+import { useProduct } from '../../../context/ProductContext';
+import { useState } from 'react';
+import PaginationProducts from '../../ui/PaginationProducts';
+import { FaRegSadCry,FaRegEdit } from 'react-icons/fa';
+import { IoTrashBinOutline } from "react-icons/io5";
+import { CiCirclePlus } from "react-icons/ci";
 
 const Admin = () => {
+
+  const [textProduct,setTextProduct] = useState("")
+
+  const {
+    products,
+    handleNameFilterChange,
+  } = useProduct()
+
+  let timeoutId
+
+  const handleSearchChange = (e) => {
+    setTextProduct(e.target.value);
+
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+
+    timeoutId = setTimeout(() => {
+      handleNameFilterChange(textProduct);
+    }, 1000);
+  };
+
   return (
-    <div>Admin</div>
+    <main className='adm-page'>
+      <div className='container-search-add'>
+      <InputSearch
+        type="text"
+        onChange={handleSearchChange}
+        value={textProduct}
+        className='input-search'
+        placeholder='Buscar produto...'
+        />
+
+        <button className='add-product'>
+          <span>
+            Adicionar Produto
+          </span>
+          <CiCirclePlus/>
+        </button>
+      </div>
+
+      <h2 className='section-products-subtitle'>{
+            textProduct ? `Resultados para  "${textProduct}"` : 'Todos os produtos'
+          }
+      </h2> 
+
+      <section className='container-products-adm'>
+          {products.length > 0 ? (
+            <>
+              {products.map((produto)=>(
+            <article className='product-adm' key={produto.id}>
+              <p className='id-product-adm'>
+                <span>ID:</span>{produto.id}
+              </p>
+              <img className='img-product-adm' src={produto.urlImage} alt={produto.name} />
+              <h3 className='name-product-adm'>{produto.name}</h3>
+              <div className='action-product-adm'>
+                <button className='edit-product'>
+                  <FaRegEdit/>
+                </button>
+                <button className='remove-product'>
+                  <IoTrashBinOutline/>
+                </button>
+              </div>
+            </article>
+          ))}
+            </>
+          ):(
+            <h3><span>Sem resultados</span> <FaRegSadCry/></h3>
+          )}
+      </section>
+
+
+      <PaginationProducts/>
+    </main>
   )
 }
 
