@@ -20,13 +20,10 @@
   place-content: center;
 }
 
-
 .card-product-selected{
   display: flex;
   flex-direction: column;
 }
-
-
 
 .card-product-selected > img{
   height: 200px;

@@ -11,10 +11,16 @@ export const ProductProvider = ({children}) => {
 
   const [products, setProducts] = useState([])
   const [productSelected, setProductSelected] = useState(null)
+  const [productEditSelected, setProductEditSelected] = useState(null)
 
   const handleProductSelected = (id) => {
     const productFiltred = products.find((item)=> item.id == id)
     setProductSelected(productFiltred)
+  }
+
+  const handleProductEditSelected = (id) => {
+    const productFiltred = products.find((item)=> item.id == id)
+    setProductEditSelected(productFiltred)
   }
 
   const [filters, setFilters] = useState({
@@ -78,6 +84,17 @@ export const ProductProvider = ({children}) => {
     }
   }
 
+  const updateProduct = async(id,{name,description,category,gender,price,quantity}) => {
+    try {
+      const response = await api.put(`product/${id}`,{name,description,category,gender,price,quantity})
+
+      toast.success('Produto atualizado com sucesso!')
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
   const filtersMemo = useMemo(() => ({
     name: filters.name,
     gender: filters.gender,
@@ -102,7 +119,11 @@ export const ProductProvider = ({children}) => {
         handleCleanFilterChange,
         productSelected,
         handleProductSelected,
-        setProductSelected
+        setProductSelected,
+        updateProduct,
+        handleProductEditSelected,
+        productEditSelected,
+        setProductEditSelected
         }}
       > 
       {children}

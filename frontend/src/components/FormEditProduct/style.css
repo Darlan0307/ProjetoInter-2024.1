@@ -1,0 +1,108 @@
+@import url(../../variables.css);
+
+.model-edit-product{  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  place-content: center;
+  gap: 1em;
+  padding: 20px;
+  
+}
+
+.subtitle-model-edit-product{
+  text-align: center;
+  color: #333;
+ 
+}
+
+.subtitle-model-edit-product span{
+  color: var(--primary-color);
+}
+
+.form-edit-product{
+  z-index: 1;
+  width: 100%;
+  max-width: 400px;
+  background-color: #f7f6f4;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  align-items: center;
+  padding: 20px;
+  border-radius: 20px;
+  margin: 0 auto;
+  overflow-y: auto;
+}
+
+.selected-category-filter{
+  width: 150px;
+  height: 40px;
+  outline: none;
+  width: 100%;
+  max-width: 300px;
+}
+
+.selected-category-filter option{
+  color: var(--font-color);
+  font-weight: bold;
+}
+
+.filter-gender{
+  display: flex;
+  gap: 2em;
+}
+
+.filter-gender > div{
+  display: flex;
+  align-items: center;
+  gap: .6em;
+}
+
+.filter-gender > div > input{
+  accent-color: var(--primary-color);
+  height: 25px;
+  width: 25px;
+}
+
+.filter-gender > div > label{
+  font-size: 18px;
+}
+
+.btn-edit{
+  border: none;
+  border-radius: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+}
+
+
+.close-model-edit{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(129, 129, 129, 0.384);
+  backdrop-filter: blur(6px);
+  z-index: -1;
+}
+
+.close-container-product-edit{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.close-container-product-edit svg{
+  fill:white;
+  font-size: 50px;
+}

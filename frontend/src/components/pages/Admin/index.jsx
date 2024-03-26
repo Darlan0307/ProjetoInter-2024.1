@@ -6,6 +6,7 @@ import PaginationProducts from '../../ui/PaginationProducts';
 import { FaRegSadCry,FaRegEdit } from 'react-icons/fa';
 import { IoTrashBinOutline } from "react-icons/io5";
 import { CiCirclePlus } from "react-icons/ci";
+import FormEditProduct from '../../FormEditProduct';
 
 const Admin = () => {
 
@@ -14,6 +15,8 @@ const Admin = () => {
   const {
     products,
     handleNameFilterChange,
+    productEditSelected,
+    handleProductEditSelected
   } = useProduct()
 
   let timeoutId
@@ -65,7 +68,7 @@ const Admin = () => {
               <img className='img-product-adm' src={produto.urlImage} alt={produto.name} />
               <h3 className='name-product-adm'>{produto.name}</h3>
               <div className='action-product-adm'>
-                <button className='edit-product'>
+                <button className='edit-product' onClick={()=>handleProductEditSelected(produto.id)}>
                   <FaRegEdit/>
                 </button>
                 <button className='remove-product'>
@@ -79,8 +82,13 @@ const Admin = () => {
             <h3><span>Sem resultados</span> <FaRegSadCry/></h3>
           )}
       </section>
-
-
+      
+      {
+        !!productEditSelected && (
+          <FormEditProduct/>
+        )
+      }
+      
       <PaginationProducts/>
     </main>
   )
