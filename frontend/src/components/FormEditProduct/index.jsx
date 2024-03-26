@@ -97,11 +97,10 @@ const FormEditProduct = () => {
             type="text"
             value={productUpdated.price}
             onChange={(e) => {
-              let value = e.target.value
-
-              let valueFormated = value.replace(",",".")
-
-              handleAtributeProduct("price",valueFormated)
+              let valueFormated = e.target.value.replace(",",".")
+              let onlyNumbers = valueFormated.replace(/[^0-9.]/g,"");
+              
+              handleAtributeProduct("price",Number(onlyNumbers))
             }}
             label="Preço"
             error={null}
@@ -112,7 +111,12 @@ const FormEditProduct = () => {
             id="quantidade"
             type="text"
             value={productUpdated.quantity}
-            onChange={(e) => handleAtributeProduct("quantity",e.target.value)}
+            onChange={(e) => {
+              let valueQuantity = e.target.value
+              let onlyNumbers = valueQuantity.replace(/[^0-9]/g,"");
+
+              handleAtributeProduct("quantity",Number(onlyNumbers))
+            }}
             label="Quantidade"
             error={null}
             required

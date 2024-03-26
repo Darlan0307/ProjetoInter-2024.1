@@ -31,7 +31,7 @@ const ModelProductSelected = () => {
           <img src={productSelected.urlImage} alt={productSelected.name} />
           <div className='card-product-selected-info'>
             <h2 className='title-product-selected'>{productSelected.name}</h2>
-            <p className='price-product-selected'>R${productSelected.price}</p>
+            <p className='price-product-selected'>R${productSelected.price},00</p>
             <div className='amounts-product-selected'>
               <p className='quantity-product-selected'><span>Quandidade:</span>{productSelected.quantity}</p>
               <p className='gender-product-selected'><span>Gênero:</span>{productSelected.gender}</p>

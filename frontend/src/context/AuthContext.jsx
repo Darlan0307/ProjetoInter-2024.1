@@ -21,6 +21,9 @@ export const AuthProvider = ({children}) => {
       if (storageUser && storageToken) {
         setUser(storageUser);
         setUserIsAdmin(storageUser.admin)
+        api.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${storageToken}`;
       }
     };
     loadingStoreData();

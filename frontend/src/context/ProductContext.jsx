@@ -81,6 +81,7 @@ export const ProductProvider = ({children}) => {
       setIsLoading(false)
     } catch (error) {
       console.log(error);
+      toast.warn(error.response.data.error)
     }
   }
 

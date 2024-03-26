@@ -89,6 +89,8 @@ export class ProductController{
 
       if (!productExist)return res.status(400).json({error: "Produto não existe"}) 
 
+      if(productExist.name == updates.name)return res.status(400).json({error: "Já existe um produto com esse nome"})
+
       const updatedProduct = await prisma.product.update({
         where: { id },
         data: updates,
