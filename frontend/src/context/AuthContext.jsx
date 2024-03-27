@@ -24,7 +24,11 @@ export const AuthProvider = ({children}) => {
         api.defaults.headers.common[
           "Authorization"
         ] = `Bearer ${storageToken}`;
+        toast.success(`Olá ${storageUser.name}!`)
+      }else{
+        if(setIsLoading)toast.success(`Seja bem-vindo(a)!`)
       }
+
     };
     loadingStoreData();
   }, []);

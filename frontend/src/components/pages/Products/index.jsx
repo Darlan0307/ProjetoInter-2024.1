@@ -142,7 +142,7 @@ const Products = () => {
               ))}
               </>
             ):(
-              <h3><span>Sem resultados</span> <FaRegSadCry/></h3>
+              <h3 className='msg-notfilter'><span>Sem resultados</span> <FaRegSadCry/></h3>
             )}
           </div>
       </section>
