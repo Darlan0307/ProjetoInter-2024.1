@@ -2,14 +2,15 @@ import { useProduct } from '../../context/ProductContext';
 import  './style.css'
 import { toast } from "react-toastify";
 import { IoIosCloseCircle } from "react-icons/io";
-import { FaCartArrowDown } from "react-icons/fa";
+import { BsHandbag } from "react-icons/bs";
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from "react-router-dom";
 const ModelProductSelected = () => {
 
   const {
     productSelected,
-    setProductSelected
+    setProductSelected,
+    addProductHandbag
   } = useProduct()
 
   const {
@@ -52,7 +53,7 @@ const ModelProductSelected = () => {
             </div>
             <p className='description-product-selected'>{productSelected.description}
             </p>
-            <button className='add-cart'
+            <button className='add-handbag'
             onClick={()=>{
               setProductSelected(null)
               if(!signed){
@@ -60,10 +61,10 @@ const ModelProductSelected = () => {
                 navigation("/signin")
                 return;
               }
-
-              toast.warn("Produto adicionado ao carrinho")
+              addProductHandbag(productSelected.id)
+              toast.warn("Produto adicionado na bolsa")
             }}
-            ><span>Adicionar ao carrinho</span> <FaCartArrowDown/></button>
+            ><span>Colocar na bolsa</span> <BsHandbag/></button>
           </div>
         </article>
       </div>

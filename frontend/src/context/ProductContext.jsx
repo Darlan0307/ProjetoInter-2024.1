@@ -12,6 +12,20 @@ export const ProductProvider = ({children}) => {
   const [products, setProducts] = useState([])
   const [productSelected, setProductSelected] = useState(null)
   const [productEditSelected, setProductEditSelected] = useState(null)
+  const [productsHandbag,setProductsHandbag] = useState([])
+
+  const addProductHandbag = (id) => {
+    const productFiltred = products.find((item)=> item.id == id)
+
+    setProductsHandbag([...productsHandbag,productFiltred])
+  }
+
+  const removeProductHandbag = (id) => {
+    const productsFiltred = productsHandbag.filter((item)=> item.id != id)
+
+    setProductsHandbag(productsFiltred)
+
+  }
 
   const handleProductSelected = (id) => {
     const productFiltred = products.find((item)=> item.id == id)
@@ -124,7 +138,10 @@ export const ProductProvider = ({children}) => {
         updateProduct,
         handleProductEditSelected,
         productEditSelected,
-        setProductEditSelected
+        setProductEditSelected,
+        productsHandbag,
+        addProductHandbag,
+        removeProductHandbag
         }}
       > 
       {children}

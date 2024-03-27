@@ -87,7 +87,7 @@
   overflow-y: auto;
 }
 
-.add-cart{
+.add-handbag{
   border: none;
   background-color: var(--primary-color);
   color: white;
@@ -102,7 +102,7 @@
   align-items: center;
 }
 
-.add-cart svg{
+.add-handbag svg{
   fill: white;
   font-size: 25px;
 }
