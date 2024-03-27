@@ -4,6 +4,7 @@ import NewsProducts from "../../NewsProducts"
 import SendHome from "../../SendHome"
 import { MoveToTop } from '../../../utils/MoveToTop'
 import { useEffect } from "react"
+import ContactUs from "../../ContactUs"
 const Home = () => {
 
   useEffect(()=>{
@@ -16,6 +17,7 @@ const Home = () => {
       <CarrosselPrincipal/>
       <SendHome/>
       <NewsProducts/>
+      <ContactUs/>
     </>
   )
 }

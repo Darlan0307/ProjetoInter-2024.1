@@ -1,0 +1,69 @@
+
+@import url(../../variables.css);
+
+.contacts_page{
+  position: fixed;
+  right: 0;
+  bottom: 1em;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: flex-start;
+}
+
+.btn-contact-page{
+  background-color: #f7f6f4;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  border-radius: 50%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-contact-page svg{
+  font-size: 40px;
+  color: var(--primary-color);
+}
+
+.info-contactUs{
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  gap: 1em;
+  background-color: white;
+}
+
+.content_contact{
+  width: 90%;
+  max-width: 300px;
+}
+
+.contacts_page h3{
+  margin-bottom: .4em;
+}
+.contacts_page p{
+  text-align: left;
+  font-size: 1.1em;
+  max-width: 700px;
+}
+
+.contacts_page div{
+  position: relative;
+}
+
+.contacts_page div span{
+  position: absolute;
+  cursor: pointer;
+  top: -5px;
+  right: -20px;
+  padding: 4px;
+}
+
+.contacts_page div span svg{
+  font-size: 20px;
+}
