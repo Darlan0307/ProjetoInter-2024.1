@@ -1,1 +1,155 @@
 @import url(../../../variables.css);
+
+.page-handbag{
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.page-handbag > h2{
+  color: var(--primary-color);
+  font-size: 2.5em;
+}
+
+.container-products-handbag{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2em;
+}
+
+.card-handbag{
+  width: 100%;
+  max-width: 500px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 1.5em;
+  position: relative;
+  justify-self: center;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.card-handbag img{
+  width: 180px;
+}
+
+.card-handbag-content,.card-handbag-actions{
+  justify-self: center;
+  color: var(--font-color);
+}
+
+.card-handbag-content h3{
+  text-align: center;
+}
+
+.card-handbag-content p{
+  font-size: 22px;
+  color: black;
+  font-weight: bold;
+}
+
+.card-handbag-actions{
+  display: flex;
+  gap: .5em;
+  align-items: center;
+}
+
+.card-handbag-actions button{
+  height: 40px;
+  width: 40px;
+  list-style: 40px;
+  padding: 5px;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0px 0px 3px black;
+  cursor: pointer;
+}
+
+.card-handbag-actions button svg{
+  font-size: 20px;
+}
+
+.card-handbag-actions span{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+@media (width <= 500px){
+  .card-handbag{
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .card-handbag img{
+    grid-column: 1/-1;
+    margin: 0 auto;
+  }
+}
+
+
+
+#remove-product-handbag{
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  background-color: transparent;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+}
+
+#remove-product-handbag svg{
+  color: #dd3529;
+  font-size: 30px;
+}
+
+.price-total{
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 1em 0;
+}
+
+.price-total p{
+  font-size: 1.5em;
+  color: var(--font-color);
+}
+
+.price-total p span{
+  color: black;
+  font-weight: bold;
+}
+
+.btn-handgab{
+  padding: 10px 20px;
+  font-size: 20px;
+  color: white;
+  background-color: var(--primary-color);
+  border-radius: 15px;
+  font-weight: bold;
+  border: none;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  text-decoration: none;
+}
+
+.handbag-empty{
+  display: flex;
+  flex-direction: column;
+  gap: .6em;
+  align-items: center;
+}
+
+.handbag-empty > h3, .handbag-empty a{
+  text-align: center;
+}
+
+.handbag-empty a{
+  color: var(--primary-color);
+  font-size: 18px;
+  font-weight: bold;
+}

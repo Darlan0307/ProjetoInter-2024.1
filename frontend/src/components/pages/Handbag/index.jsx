@@ -1,7 +1,10 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useProduct } from '../../../context/ProductContext'
 import './style.css'
 import { Link } from 'react-router-dom'
+import { FaPlus,FaMinus } from "react-icons/fa";
+import { IoTrashBinSharp } from "react-icons/io5";
+import { MoveToTop } from '../../../utils/MoveToTop'
 
 const Handbag = () => {
 
@@ -13,23 +16,21 @@ const Handbag = () => {
   } = useProduct()
 
   const priceTotal = useMemo(()=>{
-
     let value = 0
-
     productsHandbag.forEach(product => {
-
       let valueProduct = product.price * product.qtdItem
-
       value += valueProduct
     })
-
     return value
   },[productsHandbag])
 
+  useEffect(()=>{
+    MoveToTop()
+  },[])
+
   return (
     <main className='page-handbag'>
-      <h2>Bolsa</h2>
-
+      <h2>Sua Bolsa</h2>
         {productsHandbag.length > 0 ? (
           <>
             <section className='container-products-handbag'>
@@ -43,15 +44,22 @@ const Handbag = () => {
                   <div className='card-handbag-actions'>
                     <button
                     onClick={()=>plusQtdItemHandbag(product.id)}
-                    >plus</button>
+                    >
+                      <FaPlus/>
+                    </button>
                     <span>{product.qtdItem}</span>
                     <button
                     onClick={()=> minusQtdItemHandbag(product.id)}
-                    >minuos</button>
+                    >
+                      <FaMinus/>
+                    </button>
                   </div>
                   <button
                   onClick={()=>removeProductHandbag(product.id)}
-                  >remove</button>  
+                  id='remove-product-handbag'
+                  >
+                    <IoTrashBinSharp/>  
+                  </button>  
                 </article>
               ))}
             </section>
@@ -60,9 +68,9 @@ const Handbag = () => {
               <p>Valor Total: <span>R${priceTotal},00</span></p>
             </section>
 
-            <button className='btn-handgab'>
+            <Link to="/formsteps" className='btn-handgab'>
               Comprar Tudo
-            </button>
+            </Link>
           </>
         ):(
           <div className='handbag-empty'>

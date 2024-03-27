@@ -15,17 +15,27 @@ export const ProductProvider = ({children}) => {
   const [productsHandbag,setProductsHandbag] = useState([])
 
   const addProductHandbag = (id) => {
+
+    const productExisted = productsHandbag.findIndex((item)=> item.id == id)
+
+    if(productExisted != -1){
+      toast.warn("Produto já está na bolsa")
+      return
+    }
+
     const productFiltred = products.find((item)=> item.id == id)
 
     productFiltred["qtdItem"] = 1
 
     setProductsHandbag([...productsHandbag,productFiltred])
+    toast.success("Produto adicionado na bolsa!")
   }
 
   const removeProductHandbag = (id) => {
     const productsFiltred = productsHandbag.filter((item)=> item.id != id)
 
     setProductsHandbag(productsFiltred)
+    toast.success("Produto removido da bolsa!")
   }
 
   const plusQtdItemHandbag = (id) => {

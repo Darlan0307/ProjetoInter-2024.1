@@ -62,7 +62,6 @@ const ModelProductSelected = () => {
                 return;
               }
               addProductHandbag(productSelected.id)
-              toast.warn("Produto adicionado na bolsa")
             }}
             ><span>Colocar na bolsa</span> <BsHandbag/></button>
           </div>
