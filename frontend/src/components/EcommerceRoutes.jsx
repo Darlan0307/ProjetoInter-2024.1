@@ -24,6 +24,7 @@ const Products = React.lazy(() => import('./pages/Products'))
 const SignIn = React.lazy(() => import('./pages/SignIn'))
 const SignUp =  React.lazy(()=> import('./pages/SignUp'))
 const Admin = React.lazy(()=>import("./pages/Admin"))
+const Handbag = React.lazy(()=>import("./pages/Handbag"))
 
 const EcommerceRoutes = () => {
   return (
@@ -33,7 +34,11 @@ const EcommerceRoutes = () => {
         <Route index element={<Home/>}/>
         
         <Route path='/cart' element={<PrivateRouter/>}>
-          <Route path='/cart' element={<h1>CART</h1>}/>
+          <Route path='/cart' element={
+            <React.Suspense fallback={<LazyLoader/>}>
+              <Handbag/>
+            </React.Suspense>
+          }/>
         </Route>
 
         <Route path='/products' element={

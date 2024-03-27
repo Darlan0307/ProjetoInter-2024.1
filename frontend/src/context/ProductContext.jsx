@@ -17,6 +17,8 @@ export const ProductProvider = ({children}) => {
   const addProductHandbag = (id) => {
     const productFiltred = products.find((item)=> item.id == id)
 
+    productFiltred["qtdItem"] = 1
+
     setProductsHandbag([...productsHandbag,productFiltred])
   }
 
@@ -24,7 +26,33 @@ export const ProductProvider = ({children}) => {
     const productsFiltred = productsHandbag.filter((item)=> item.id != id)
 
     setProductsHandbag(productsFiltred)
+  }
 
+  const plusQtdItemHandbag = (id) => {
+    const productsModificad = productsHandbag.map((item)=> {
+      if(item.id == id){
+        item["qtdItem"] = item.qtdItem + 1
+        return item
+      }
+      return item
+    })
+    setProductsHandbag(productsModificad)
+  }
+
+  const minusQtdItemHandbag = (id) => {
+    const productsModificad = productsHandbag.map((item)=> {
+      if(item.id == id){
+
+        if(item.qtdItem - 1 == 0){
+          return item
+        }
+
+        item["qtdItem"] = item.qtdItem - 1
+        return item
+      }
+      return item
+    })
+    setProductsHandbag(productsModificad)
   }
 
   const handleProductSelected = (id) => {
@@ -141,7 +169,9 @@ export const ProductProvider = ({children}) => {
         setProductEditSelected,
         productsHandbag,
         addProductHandbag,
-        removeProductHandbag
+        removeProductHandbag,
+        plusQtdItemHandbag,
+        minusQtdItemHandbag
         }}
       > 
       {children}
