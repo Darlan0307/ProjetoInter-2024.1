@@ -25,6 +25,7 @@ const SignIn = React.lazy(() => import('./pages/SignIn'))
 const SignUp =  React.lazy(()=> import('./pages/SignUp'))
 const Admin = React.lazy(()=>import("./pages/Admin"))
 const Handbag = React.lazy(()=>import("./pages/Handbag"))
+const FormPagamento = React.lazy(()=>import("./pages/FormPagamento"))
 
 const EcommerceRoutes = () => {
   return (
@@ -68,6 +69,17 @@ const EcommerceRoutes = () => {
             </React.Suspense>
           }/>
         </Route>
+
+        {/* /formsteps */}
+
+        <Route path='/formsteps' element={<PrivateRouter/>}>
+          <Route path='/formsteps' element={
+            <React.Suspense fallback={<LazyLoader/>}>
+              <FormPagamento/>
+            </React.Suspense>
+          }/>
+        </Route>
+
         <Route path='*' element={<h1>Page 404 not found</h1>}/>
       </Routes>
 
