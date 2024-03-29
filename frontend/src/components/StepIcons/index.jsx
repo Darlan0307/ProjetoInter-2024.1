@@ -1,5 +1,6 @@
 import './style.css'
-import {FaUser,FaStar,FaPaperPlane} from 'react-icons/fa'
+import {FaUser} from 'react-icons/fa'
+import { FaMapLocationDot,FaMoneyCheckDollar } from "react-icons/fa6";
 
 const StepIcons = ({currentStep}) => {
   return (
@@ -10,11 +11,11 @@ const StepIcons = ({currentStep}) => {
             <span>Identificação</span>
         </div>
         <div className={currentStep >= 1 ? 'active' : 'nan'} >
-            <FaStar/>
+            <FaMapLocationDot/>
             <span>Localização</span>
         </div>
         <div className={currentStep >= 2 ? 'active': 'nan'}>
-            <FaPaperPlane/>
+            <FaMoneyCheckDollar/>
             <span>Pagamento</span>
         </div>
       

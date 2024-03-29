@@ -1,2 +1,46 @@
 @import url(../../variables.css);
 
+.container-form-generec{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  padding: 10px;
+}
+
+.container-form-generec > h3{
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.container-form-generec p{
+  font-size: 1.1em;
+  color: var(--font-color);
+}
+
+.container-form-generec span{
+  font-weight: bold;
+  font-size: 18px;
+  color: black;
+}
+
+.container-paymentType{
+  display: flex;
+  justify-content: center;
+  gap: 1.4em;
+}
+
+.container-paymentType > div{
+  display: flex;
+  gap: .6em;
+  align-items: center;
+}
+
+.container-paymentType > div > input{
+  height: 25px;
+  width: 25px;
+  accent-color: var(--primary-color);
+}
+
+.container-paymentType > div > label{
+  font-size: 18px;
+}

@@ -1,3 +1,5 @@
+@import url(../../variables.css);
+
 .icons-steps{
   display: flex;
   align-items: center;
@@ -15,10 +17,15 @@
 }
 
 .icons-steps div svg{
-  font-size: 32px;
+  font-size: clamp(22px,4vw,32px);
+  transition: all .6s;
+}
+
+.icons-steps div span{
+  font-size: clamp(12px,4vw,20px);
   transition: all .6s;
 }
 
 .active svg{
-  fill: #535bf2;
+  fill: var(--primary-color);
 }

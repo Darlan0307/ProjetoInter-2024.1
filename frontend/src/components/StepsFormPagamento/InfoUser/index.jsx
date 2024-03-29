@@ -11,7 +11,7 @@ const InfoUser = () => {
   const [infoEmail,setInfoEmail] = useState(user.email)
 
   return (
-    <div>
+    <div className='container-form-generec'>
 
       <h3>Confirme seus Dados</h3>
 

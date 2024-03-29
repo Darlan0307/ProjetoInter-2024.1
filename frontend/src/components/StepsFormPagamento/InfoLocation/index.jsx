@@ -12,7 +12,7 @@ const InfoLocation = () => {
 
 
   return (
-    <div>
+    <div className='container-form-generec'>
 
       <h3>Para onde vamos enviar?</h3>
 

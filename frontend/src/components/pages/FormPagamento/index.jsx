@@ -23,8 +23,8 @@ const FormPagamento = () => {
   } = useForm(steps)
 
   return (
-    <main>
-      <h2>Formulário de Compra</h2>
+    <main className='form-payment'>
+      <h2 className='subtitle-form-payment'>Formulário de Compra</h2>
       <StepIcons currentStep={currentStep}/>
 
       <div>{currentComponent}</div>

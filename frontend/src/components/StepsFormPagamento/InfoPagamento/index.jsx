@@ -2,13 +2,13 @@ import '../globalSteps.css'
 
 const InfoPagamento = () => {
   return (
-    <div>
+    <div className='container-form-generec'>
       <h3>Estamos quase acabando</h3>
-      <p>Valor a ser pago na hora da entrega</p>
-      <span>R$1232,00</span>
 
-      <p>Qual vai ser a forma de pagamento?</p>
-      <div>
+      <p>Valor a ser pago na hora da entrega: <span>R$1232,00</span></p>
+        
+      <p>Qual a forma de pagamento?</p>
+      <div className='container-paymentType'>
 
         <div>
           <input type="radio" name='paymentType' id='money'/>
