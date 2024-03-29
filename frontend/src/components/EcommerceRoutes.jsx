@@ -26,6 +26,7 @@ const SignUp =  React.lazy(()=> import('./pages/SignUp'))
 const Admin = React.lazy(()=>import("./pages/Admin"))
 const Handbag = React.lazy(()=>import("./pages/Handbag"))
 const FormPagamento = React.lazy(()=>import("./pages/FormPagamento"))
+const MessageThanks = React.lazy(()=>import("./pages/MessageThanks"))
 
 const EcommerceRoutes = () => {
   return (
@@ -74,6 +75,14 @@ const EcommerceRoutes = () => {
           <Route path='/formsteps' element={
             <React.Suspense fallback={<LazyLoader/>}>
               <FormPagamento/>
+            </React.Suspense>
+          }/>
+        </Route>
+
+        <Route path='/thanks' element={<PrivateRouter/>}>
+          <Route path='/thanks' element={
+            <React.Suspense fallback={<LazyLoader/>}>
+              <MessageThanks/>
             </React.Suspense>
           }/>
         </Route>

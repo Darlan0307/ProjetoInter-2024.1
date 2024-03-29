@@ -8,7 +8,6 @@ import { toast } from 'react-toastify'
 const InfoLocation = () => {
 
   const {
-    isLoading,
     setIsLoading
   } = useLoader()
 
