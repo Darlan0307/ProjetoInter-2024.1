@@ -1,10 +1,136 @@
 @import url(../../../variables.css);
 
+.container-register-product{
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+}
+
+.container-register-product > h2{
+  color: var(--primary-color);
+  font-size: clamp(1.5em,4vw,2.1em);
+  text-align: center;
+}
 
 
+.form-register-product{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5em;
+  padding: 10px;
+}
+
+.gender-register-product,.category-register-product,.description-register-product{
+  align-self: flex-start;
+}
+
+.gender-register-product{
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: .6em;
+}
+
+.gender-register-product p{
+  grid-column: 1/-1;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.gender-register-product > div{
+  display: flex;
+  align-items: center;
+  gap: .5em;
+}
+
+.gender-register-product > div > input{
+  height: 25px;
+  width: 25px;
+  accent-color: var(--primary-color);
+}
+
+.gender-register-product > div > label{
+  font-size: 1.1em;
+}
+
+.category-register-product{
+  padding: 10px;
+  outline: none;
+  border-radius: 10px;
+  font-size: 1.1em;
+  border: 1px solid var(--font-color);
+} 
+
+.category-register-product:focus{
+  border-color: var(--primary-color);
+}
+
+
+
+.description-register-product{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.description-register-product textarea{
+  outline: none;
+  border: 1px solid var(--font-color);
+  background-color: transparent;
+  border-radius: 15px;
+  font-size: 16px;
+  padding: 10px 15px;
+  width: 100%;
+  max-width: 300px;
+  transition: all .6s ease-in-out;
+  height: 100px;
+}
+
+.description-register-product label{
+  position: absolute;
+  transition: all .5s;
+  left: 5%;
+  top: 10px;
+  
+  font-weight: bold;
+  
+}
+
+.description-register-product textarea:focus + label,
+.description-register-product textarea:valid + label{
+  top: -8px;
+  left: 4%;
+  background-color: #f7f6f4;
+  font-size: 14px;
+  color: var(--primary-color);
+}
+
+.description-register-product textarea:focus,
+.description-register-product textarea:valid{
+  border-color: var(--primary-color);
+}
+
+
+.btn-register-product{
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+}
+
+
+
+
+/* Input upload image */
 .custum-file-upload {
-  height: 200px;
-  width: 300px;
+  height: 180px;
+  width: 260px;
   display: flex;
   flex-direction: column;
   align-items: space-between;
