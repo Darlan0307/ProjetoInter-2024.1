@@ -1,8 +1,16 @@
 import '../globalSteps.css'
 import InputField from '../../ui/Input'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { useLoader } from '../../../context/LoaderContext'
+import { toast } from 'react-toastify'
 
 const InfoLocation = () => {
+
+  const {
+    isLoading,
+    setIsLoading
+  } = useLoader()
 
   const [infoCep,setInfoCep] = useState("")
   const [infoRua,setInfoRua] = useState("")
@@ -10,6 +18,36 @@ const InfoLocation = () => {
   const [infoCidade,setInfoCidade] = useState("")
   const [infoEstado,setInfoEstado] = useState("")
 
+  const queryDataCep = async() => {
+    setIsLoading(true)
+    try {
+      const response = await axios.get(`https://cep.awesomeapi.com.br/json/${infoCep}`)
+
+      setInfoRua(response.data.address)
+      setInfoBairro(response.data.district)
+      setInfoCidade(response.data.city)
+      setInfoEstado(response.data.state)
+      setTimeout(()=>{
+        toast.success("CEP encontrado!")
+      },2000)
+    } catch (error) {
+      setTimeout(()=>{
+        toast.error(error.response.data.message)
+      },2000)
+    }finally{
+      setTimeout(()=>{
+        setIsLoading(false)
+      },2000)
+    }
+  }
+  
+  useEffect(()=>{
+
+    if(infoCep.length == 8){
+      queryDataCep()
+    }
+
+  },[infoCep])
 
   return (
     <div className='container-form-generec'>
