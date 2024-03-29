@@ -32,7 +32,7 @@ const FormPagamento = () => {
 
   return (
     <main className='form-payment'>
-      <h2 className='subtitle-form-payment'>Formulário de Compra</h2>
+      <h2 className='subtitle-form-payment'>Formulário de Pedido</h2>
       <StepIcons currentStep={currentStep}/>
 
       <div>{currentComponent}</div>

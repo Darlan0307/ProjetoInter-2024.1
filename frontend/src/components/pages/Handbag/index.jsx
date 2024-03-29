@@ -62,7 +62,7 @@ const Handbag = () => {
             </section>
 
             <Link to="/formsteps" className='btn-handgab'>
-              Comprar Tudo
+                Pedir Agora
             </Link>
           </>
         ):(

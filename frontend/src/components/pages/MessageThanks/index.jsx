@@ -8,7 +8,7 @@ const MessageThanks = () => {
       <div className='container-animatejson'>
         <AnimationLottie/>
       </div>
-      <h2>Compra Finalizada!</h2>
+      <h2>Pedido Finalizado!</h2>
       <p>Ficamos felizes por escolher os nossos produtos.</p>
       <p>Agora vamos verificar suas informações para realizarmos a entrega o mais rápido possível.</p>
       <Link to="/">Voltar ao início</Link>
