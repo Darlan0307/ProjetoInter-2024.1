@@ -12,7 +12,7 @@ export const ProductProvider = ({children}) => {
   const [products, setProducts] = useState([])
   const [productSelected, setProductSelected] = useState(null)
   const [productEditSelected, setProductEditSelected] = useState(null)
-  const [productsHandbag,setProductsHandbag] = useState([])
+  const [productsHandbag,setProductsHandbag] = useState(JSON.parse(localStorage.getItem("ProductsHandbag")) || [])
 
   let priceTotal = useMemo(()=>{
     let value = 0
@@ -24,18 +24,14 @@ export const ProductProvider = ({children}) => {
   },[productsHandbag])
 
   const addProductHandbag = (id) => {
-
     const productExisted = productsHandbag.findIndex((item)=> item.id == id)
 
     if(productExisted != -1){
       toast.warn("Produto já está na bolsa")
       return
     }
-
     const productFiltred = products.find((item)=> item.id == id)
-
     productFiltred["qtdItem"] = 1
-
     setProductsHandbag([...productsHandbag,productFiltred])
     toast.success("Produto adicionado na bolsa!")
   }
@@ -65,7 +61,6 @@ export const ProductProvider = ({children}) => {
         if(item.qtdItem - 1 == 0){
           return item
         }
-
         item["qtdItem"] = item.qtdItem - 1
         return item
       }
@@ -167,6 +162,11 @@ export const ProductProvider = ({children}) => {
     fetchData(filtersMemo);
   },[page,filtersMemo])
 
+  useEffect(()=>{
+    localStorage.setItem("ProductsHandbag",JSON.stringify(productsHandbag))
+  },[productsHandbag])
+
+
   return (
     <ProductContext.Provider 
       value={{
@@ -187,6 +187,7 @@ export const ProductProvider = ({children}) => {
         productEditSelected,
         setProductEditSelected,
         productsHandbag,
+        setProductsHandbag,
         addProductHandbag,
         removeProductHandbag,
         plusQtdItemHandbag,

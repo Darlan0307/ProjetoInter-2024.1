@@ -5,6 +5,7 @@ import './style.css'
 import { useForm } from '../../../utils/useForm'
 import StepIcons from '../../StepIcons'
 import { useNavigate } from 'react-router-dom'
+import { useProduct } from '../../../context/ProductContext'
 
 
 const FormPagamento = () => {
@@ -25,6 +26,10 @@ const FormPagamento = () => {
     ,lastStep
   } = useForm(steps)
 
+  const {
+    setProductsHandbag
+  } = useProduct()
+
   return (
     <main className='form-payment'>
       <h2 className='subtitle-form-payment'>Formulário de Compra</h2>
@@ -36,7 +41,11 @@ const FormPagamento = () => {
         {currentStep != 0 && <button onClick={previousStep}>Voltar</button>}
         {lastStep ? (
           <button
-          onClick={()=>navigate("/thanks")}
+          onClick={()=>{
+            localStorage.removeItem("ProductsHandbag");
+            setProductsHandbag([])
+            navigate("/thanks")
+          }}
           >Finalizar</button>
         ):(
           <button onClick={nextStep}>Avançar</button>

@@ -11,8 +11,6 @@ export const AuthProvider = ({children}) => {
   const [user, setUser] = useState(null)
   const [userIsAdm, setUserIsAdmin] = useState(false)
   
-
-  // Buscando token no localstorage se houver
   useEffect(() => {
     const loadingStoreData = () => {
       const storageUser = JSON.parse(localStorage.getItem("@Auth:user"));
@@ -43,7 +41,7 @@ export const AuthProvider = ({children}) => {
     try {
       const response = await api.post("/user",{name,email,password})
 
-      setUser(response.data)
+      setUser(response.data.user)
       setUserIsAdmin(response.data.user.admin)
       salveDataLocalStorage(response.data)
       toast.success("Cadastrado com sucesso!")
@@ -61,7 +59,7 @@ export const AuthProvider = ({children}) => {
     try {
       const response = await api.post("/auth",{email,password})
 
-      setUser(response.data)
+      setUser(response.data.user)
       salveDataLocalStorage(response.data)
       setUserIsAdmin(response.data.user.admin)
       toast.success("Logado com sucesso!")
@@ -80,6 +78,7 @@ export const AuthProvider = ({children}) => {
   const signOut = () => {
     localStorage.removeItem("@Auth:user");
     localStorage.removeItem("@Auth:token");
+    localStorage.removeItem("ProductsHandbag");
     setUser(null)
     setUserIsAdmin(false)
     toast.success( "Deslogado com Sucesso!");

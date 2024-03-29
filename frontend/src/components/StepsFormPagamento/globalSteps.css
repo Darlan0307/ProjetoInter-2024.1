@@ -26,7 +26,7 @@
 .container-paymentType{
   display: flex;
   justify-content: center;
-  gap: 1.4em;
+  gap: 1em;
 }
 
 .container-paymentType > div{
@@ -42,5 +42,4 @@
 }
 
 .container-paymentType > div > label{
-  font-size: 18px;
 }
