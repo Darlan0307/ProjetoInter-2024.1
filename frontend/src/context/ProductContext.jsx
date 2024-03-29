@@ -14,6 +14,15 @@ export const ProductProvider = ({children}) => {
   const [productEditSelected, setProductEditSelected] = useState(null)
   const [productsHandbag,setProductsHandbag] = useState([])
 
+  let priceTotal = useMemo(()=>{
+    let value = 0
+    productsHandbag.forEach(product => {
+      let valueProduct = product.price * product.qtdItem
+      value += valueProduct
+    })
+    return value
+  },[productsHandbag])
+
   const addProductHandbag = (id) => {
 
     const productExisted = productsHandbag.findIndex((item)=> item.id == id)
@@ -181,7 +190,8 @@ export const ProductProvider = ({children}) => {
         addProductHandbag,
         removeProductHandbag,
         plusQtdItemHandbag,
-        minusQtdItemHandbag
+        minusQtdItemHandbag,
+        priceTotal
         }}
       > 
       {children}

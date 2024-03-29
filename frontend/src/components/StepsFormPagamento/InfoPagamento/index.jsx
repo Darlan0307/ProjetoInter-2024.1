@@ -1,11 +1,17 @@
+import { useProduct } from '../../../context/ProductContext'
 import '../globalSteps.css'
 
 const InfoPagamento = () => {
+
+  const {
+    priceTotal
+  } = useProduct()
+
   return (
     <div className='container-form-generec'>
       <h3>Estamos quase acabando</h3>
 
-      <p>Valor a ser pago na hora da entrega: <span>R$1232,00</span></p>
+      <p>Valor a ser pago na hora da entrega: <span>R${priceTotal},00</span></p>
         
       <p>Qual a forma de pagamento?</p>
       <div className='container-paymentType'>

@@ -9,20 +9,13 @@ import { MoveToTop } from '../../../utils/MoveToTop'
 const Handbag = () => {
 
   const {
+    priceTotal,
     productsHandbag,
     removeProductHandbag,
     plusQtdItemHandbag,
     minusQtdItemHandbag
   } = useProduct()
 
-  const priceTotal = useMemo(()=>{
-    let value = 0
-    productsHandbag.forEach(product => {
-      let valueProduct = product.price * product.qtdItem
-      value += valueProduct
-    })
-    return value
-  },[productsHandbag])
 
   useEffect(()=>{
     MoveToTop()
