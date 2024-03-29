@@ -1,0 +1,24 @@
+.icons-steps{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+} 
+
+.icons-steps div{
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  align-items: center;
+  
+}
+
+.icons-steps div svg{
+  font-size: 32px;
+  transition: all .6s;
+}
+
+.active svg{
+  fill: #535bf2;
+}

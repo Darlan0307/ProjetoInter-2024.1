@@ -70,8 +70,6 @@ const EcommerceRoutes = () => {
           }/>
         </Route>
 
-        {/* /formsteps */}
-
         <Route path='/formsteps' element={<PrivateRouter/>}>
           <Route path='/formsteps' element={
             <React.Suspense fallback={<LazyLoader/>}>
