@@ -7,6 +7,7 @@ import { FaRegSadCry,FaRegEdit } from 'react-icons/fa';
 import { IoTrashBinOutline } from "react-icons/io5";
 import { CiCirclePlus } from "react-icons/ci";
 import FormEditProduct from '../../FormEditProduct';
+import { Link } from 'react-router-dom'
 
 const Admin = () => {
 
@@ -44,12 +45,12 @@ const Admin = () => {
         placeholder='Buscar produto...'
         />
 
-        <button className='add-product'>
+        <Link to="/newproduct" className='add-product'>
           <span>
             Adicionar Produto
           </span>
           <CiCirclePlus/>
-        </button>
+        </Link>
       </div>
 
       <h2 className='section-products-subtitle'>{
