@@ -17,7 +17,8 @@ const Admin = () => {
     products,
     handleNameFilterChange,
     productEditSelected,
-    handleProductEditSelected
+    handleProductEditSelected,
+    removeProduct
   } = useProduct()
 
   let timeoutId
@@ -72,7 +73,7 @@ const Admin = () => {
                 <button className='edit-product' onClick={()=>handleProductEditSelected(produto.id)}>
                   <FaRegEdit/>
                 </button>
-                <button className='remove-product'>
+                <button className='remove-product' onClick={()=>removeProduct(produto.id)}>
                   <IoTrashBinOutline/>
                 </button>
               </div>

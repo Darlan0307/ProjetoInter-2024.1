@@ -146,7 +146,22 @@ export const ProductProvider = ({children}) => {
 
       toast.success('Produto atualizado com sucesso!')
     } catch (error) {
-      console.log(error);
+      toast.warn(error.response.data.error)
+    }
+  }
+
+  const removeProduct = async(id) => {
+    try {
+
+      const response = confirm("Deseja realmente excluir o produto?")
+      if(!response){
+        toast.success('Cancelado')
+        return;
+      }
+      await api.delete(`product/${id}`)
+
+      toast.success('Produto removido com sucesso!')
+    } catch (error) {
       toast.warn(error.response.data.error)
     }
   }
@@ -183,6 +198,7 @@ export const ProductProvider = ({children}) => {
         handleProductSelected,
         setProductSelected,
         updateProduct,
+        removeProduct,
         handleProductEditSelected,
         productEditSelected,
         setProductEditSelected,
