@@ -112,3 +112,18 @@
   color: white;
   font-size: 28px;
 }
+
+.msg-notfilter{
+  display: flex;
+  gap: .6em;
+  align-items: center;
+  color: var(--font-color);
+}
+
+.msg-notfilter span{
+  font-size: 20px;
+}
+
+.msg-notfilter svg{
+  font-size: 30px;
+}

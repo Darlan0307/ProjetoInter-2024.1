@@ -5,10 +5,16 @@ import SendHome from "../../SendHome"
 import { MoveToTop } from '../../../utils/MoveToTop'
 import { useEffect } from "react"
 import ContactUs from "../../ContactUs"
+import { useProduct } from "../../../context/ProductContext"
 const Home = () => {
+
+  const {
+    handleCleanFilterChange
+  } = useProduct()
 
   useEffect(()=>{
     MoveToTop()
+    handleCleanFilterChange()
   },[])
 
   return (

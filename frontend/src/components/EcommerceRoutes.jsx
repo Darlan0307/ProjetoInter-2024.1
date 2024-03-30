@@ -50,7 +50,6 @@ const EcommerceRoutes = () => {
           </React.Suspense>
         }/>
         <Route path='/location' element={<h1>Localização</h1>}/>
-        <Route path='/popular' element={<h1>mais vendidos</h1>}/>
 
         <Route path='/signin' element={
           <React.Suspense fallback={<LazyLoader/>}>

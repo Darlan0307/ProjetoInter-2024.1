@@ -60,9 +60,6 @@ const ComponentHeader = () => {
           </li>
           }
           <li>
-            <Link to="/popular">Mais Vendidos</Link>
-          </li>
-          <li>
             <Link to="/products">Produtos</Link>
           </li>
           <li>
