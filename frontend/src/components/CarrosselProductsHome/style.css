@@ -1,0 +1,38 @@
+@import url(../../variables.css);
+
+.container-carrossel-home{
+  padding: 20px;
+}
+
+.card-carrossel-home{
+  background-color: var(--bg-color);
+  display: grid;
+  grid-template-rows: 230px 50px;
+  align-items: center;
+  width: fit-content;
+  margin: 0 auto;
+  text-decoration: none;
+  border-radius: 15px;
+  padding: 10px;
+  
+}
+
+.card-carrossel-home > img{
+  width: 200px;
+  height: 230px;
+  grid-column: 1/-1;
+  justify-self: center;
+  transition: all .3s;
+}
+
+.card-carrossel-home:hover > img{
+  transform: translateY(-10px);
+}
+
+.card-carrossel-home > p{
+  color: var(--font-color);
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+}
+

@@ -6,6 +6,7 @@ import { MoveToTop } from '../../../utils/MoveToTop'
 import { useEffect } from "react"
 import ContactUs from "../../ContactUs"
 import { useProduct } from "../../../context/ProductContext"
+import CarrosselProductsHome from "../../CarrosselProductsHome"
 const Home = () => {
 
   const {
@@ -24,6 +25,7 @@ const Home = () => {
       <SendHome/>
       <NewsProducts/>
       <ContactUs/>
+      <CarrosselProductsHome/>
     </>
   )
 }

@@ -1,5 +1,5 @@
 import './style.css'
-import { Swiper, SwiperSlide,useSwiper } from 'swiper/react'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import { Link } from 'react-router-dom'
 import { CiBookmarkPlus } from "react-icons/ci";
 
@@ -34,8 +34,6 @@ const dataCategory = [
 ]
 
 const CarrosselPrincipal = () => {
-
-  const swiper = useSwiper()
 
   return (
     <section className='carousel'>
