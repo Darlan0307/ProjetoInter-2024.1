@@ -28,6 +28,7 @@ const Handbag = React.lazy(()=>import("./pages/Handbag"))
 const FormPagamento = React.lazy(()=>import("./pages/FormPagamento"))
 const MessageThanks = React.lazy(()=>import("./pages/MessageThanks"))
 const FormRegisterProduct = React.lazy(()=>import("./pages/FormRegisterProduct"))
+const Location = React.lazy(()=>import("./pages/Location"))
 
 const EcommerceRoutes = () => {
   return (
@@ -49,7 +50,12 @@ const EcommerceRoutes = () => {
             <Products/>
           </React.Suspense>
         }/>
-        <Route path='/location' element={<h1>Localização</h1>}/>
+
+        <Route path='/location' element={
+          <React.Suspense fallback={<LazyLoader/>}>
+            <Location/>
+          </React.Suspense>
+        }/>
 
         <Route path='/signin' element={
           <React.Suspense fallback={<LazyLoader/>}>

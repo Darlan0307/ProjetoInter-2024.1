@@ -14,7 +14,6 @@ const CarrosselProductsHome = () => {
       <Swiper
       navigation
 			loop= {true}
-      pagination={{clickable:true}}
       autoplay={{
             delay:2000,
             disableOnInteraction: true
