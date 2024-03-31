@@ -7,6 +7,7 @@ import { useEffect } from "react"
 import ContactUs from "../../ContactUs"
 import { useProduct } from "../../../context/ProductContext"
 import CarrosselProductsHome from "../../CarrosselProductsHome"
+import ChoseUs from "../../ChoseUs"
 const Home = () => {
 
   const {
@@ -26,6 +27,7 @@ const Home = () => {
       <NewsProducts/>
       <ContactUs/>
       <CarrosselProductsHome/>
+      <ChoseUs/>
     </>
   )
 }
