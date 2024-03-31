@@ -1,6 +1,8 @@
 import './style.css'
 import { GiClothes,GiTakeMyMoney } from "react-icons/gi";
 import { MdOutlineSecurity } from "react-icons/md";
+import imgOnlineShop from '../../assets/img-dialogo (1).jpg'
+import { Link } from 'react-router-dom'
 
 const ChoseUs = () => {
 
@@ -36,6 +38,11 @@ const ChoseUs = () => {
             <p>{service.description}</p>
           </article>
         ))}
+      </div>
+
+      <div className='msg-choseus'>
+        <img className='online-shop' src={imgOnlineShop} alt="online shop" />
+        <h2>Você está esperando oque para conhecer os nossos <Link to="/products">produtos</Link>?</h2>
       </div>
     </section>
   )
