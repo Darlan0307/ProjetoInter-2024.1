@@ -8,6 +8,7 @@ import ContactUs from "../../ContactUs"
 import { useProduct } from "../../../context/ProductContext"
 import CarrosselProductsHome from "../../CarrosselProductsHome"
 import ChoseUs from "../../ChoseUs"
+import FAQ from "../../FAQ"
 const Home = () => {
 
   const {
@@ -28,6 +29,7 @@ const Home = () => {
       <ContactUs/>
       <CarrosselProductsHome/>
       <ChoseUs/>
+      <FAQ/>
     </>
   )
 }
