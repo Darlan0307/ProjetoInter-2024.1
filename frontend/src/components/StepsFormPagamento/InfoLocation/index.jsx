@@ -16,6 +16,8 @@ const InfoLocation = () => {
   const [infoBairro,setInfoBairro] = useState("")
   const [infoCidade,setInfoCidade] = useState("")
   const [infoEstado,setInfoEstado] = useState("")
+  const [infoComplemento,setInfoComplemento] = useState("")
+  const [infoNumCasa,setInfoNumCasa] = useState("")
 
   const queryDataCep = async() => {
     setIsLoading(true)
@@ -64,23 +66,13 @@ const InfoLocation = () => {
           autoComplete='off'
       />
 
+      <div className='group-input'>
       <InputField
-          id="rua"
+          id="estado"
           type="text"
-          value={infoRua}
-          onChange={(e) => setInfoRua(e.target.value)}
-          label="Rua"
-          error={null}
-          required
-          autoComplete='off'
-      />
-
-      <InputField
-          id="bairro"
-          type="text"
-          value={infoBairro}
-          onChange={(e) => setInfoBairro(e.target.value)}
-          label="Bairro"
+          value={infoEstado}
+          onChange={(e) => setInfoEstado(e.target.value)}
+          label="Estado"
           error={null}
           required
           autoComplete='off'
@@ -96,17 +88,52 @@ const InfoLocation = () => {
           required
           autoComplete='off'
       />
+      </div>
 
       <InputField
-          id="estado"
+          id="bairro"
           type="text"
-          value={infoEstado}
-          onChange={(e) => setInfoEstado(e.target.value)}
-          label="estado"
+          value={infoBairro}
+          onChange={(e) => setInfoBairro(e.target.value)}
+          label="Bairro"
           error={null}
           required
           autoComplete='off'
       />
+
+      <InputField
+          id="rua"
+          type="text"
+          value={infoRua}
+          onChange={(e) => setInfoRua(e.target.value)}
+          label="Rua"
+          error={null}
+          required
+          autoComplete='off'
+      />
+
+    <div className='group-input'>
+      <InputField
+            id="complemento"
+            type="text"
+            value={infoComplemento}
+            onChange={(e) => setInfoComplemento(e.target.value)}
+            label="Complemento"
+            error={null}
+            required
+            autoComplete='off'
+        />
+        <InputField
+            id="numCasa"
+            type="text"
+            value={infoNumCasa}
+            onChange={(e) => setInfoNumCasa(e.target.value)}
+            label="Nº Casa"
+            error={null}
+            required
+            autoComplete='off'
+        />
+    </div>
 
     </div>
   )

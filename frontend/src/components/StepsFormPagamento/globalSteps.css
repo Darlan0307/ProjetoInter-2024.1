@@ -41,5 +41,12 @@
   accent-color: var(--primary-color);
 }
 
-.container-paymentType > div > label{
+.group-input{
+  display: flex;
+  gap: .4em;
+  max-width: 300px;
+}
+
+.group-input #estado{
+  width: 65px;
 }

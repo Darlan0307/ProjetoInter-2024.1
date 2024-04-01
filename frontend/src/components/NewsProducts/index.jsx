@@ -9,7 +9,7 @@ const NewsProducts = () => {
   } = useProduct()
 
   let ultimoProduto =  products[products.length -1]
-  let penultimoProduto = products[products.length -2]
+  let penultimoProduto = products[products.length -8]
 
   return (
     <section className='news-products'>

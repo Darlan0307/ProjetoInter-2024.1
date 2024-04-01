@@ -9,6 +9,7 @@ const InfoUser = () => {
 
   const [infoName,setInfoName] = useState(user.name)
   const [infoEmail,setInfoEmail] = useState(user.email)
+  const [infoFone,setInfoFone] = useState()
 
   return (
     <div className='container-form-generec'>
@@ -36,6 +37,17 @@ const InfoUser = () => {
           required
           autoComplete='off'
         />  
+
+      <InputField
+          id="fone"
+          type="text"
+          value={infoFone}
+          onChange={(e) => setInfoFone(e.target.value)}
+          label="Telefone"
+          error={null}
+          required
+          autoComplete='off'
+      />
 
     </div>
   )
