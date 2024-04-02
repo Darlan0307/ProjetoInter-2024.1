@@ -1,13 +1,15 @@
 import './style.css'
 import { useProduct } from '../../context/ProductContext'
-import { IoIosCloseCircle } from 'react-icons/io'
 import InputField from '../ui/Input'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { MoveToTop } from '../../utils/MoveToTop'
+import { useNavigate } from 'react-router-dom'
+import { RiArrowGoBackLine } from "react-icons/ri";
 
 const FormEditProduct = () => {
 
-  
+  const navigate = useNavigate()
+
   const {
     productEditSelected,
     setProductEditSelected,
@@ -29,18 +31,22 @@ const FormEditProduct = () => {
     event.preventDefault()
 
     updateProduct(productUpdated.id,productUpdated)
-    // console.log(productUpdated);
     setProductEditSelected(null)
-    MoveToTop()
+    navigate("/adm")
   }
+
+  useEffect(()=>{
+    MoveToTop()
+  },[])
 
   return (
      (
       <div className='model-edit-product'>
 
-      <button className='close-container-product-edit' onClick={()=>setProductEditSelected(null)}>
-          <IoIosCloseCircle/>
-        </button>
+      <button onClick={()=>navigate("/adm")} className='back-container-product-edit'>
+          <RiArrowGoBackLine/>
+          <span>Voltar</span>
+      </button>
 
         <h2 className='subtitle-model-edit-product'>Editando o produto: <span>{productEditSelected.name}</span></h2>
 
@@ -54,27 +60,7 @@ const FormEditProduct = () => {
             error={null}
             required
           />
-          <InputField
-            id="descricao"
-            type="text"
-            value={productUpdated.description}
-            onChange={(e) => handleAtributeProduct("description",e.target.value)}
-            label="Descrição"
-            error={null}
-            required
-          />
-          <select className='selected-category-filter'
-              onChange={(e) => handleAtributeProduct("category",e.target.value)}
-              value={productUpdated.category}
-              >
-                <option value="camiseta">camiseta</option>
-                <option value="blusa">blusa</option>
-                <option value="calca">calça</option>
-                <option value="short">short</option>
-                <option value="bermuda">bermuda</option>
-                <option value="saia">saia</option>
-                <option value="vestido">vestido</option>
-              </select>
+
           <div className='filter-gender'>
                 <div>
                   <input type="radio" name='genero' id='masculino' value="M"
@@ -91,6 +77,20 @@ const FormEditProduct = () => {
                   <label htmlFor="feminino">feminino</label>
                 </div>
           </div>
+          
+          <select className='selected-category-filter'
+              onChange={(e) => handleAtributeProduct("category",e.target.value)}
+              value={productUpdated.category}
+              >
+                <option value="camiseta">camiseta</option>
+                <option value="blusa">blusa</option>
+                <option value="calca">calça</option>
+                <option value="short">short</option>
+                <option value="bermuda">bermuda</option>
+                <option value="saia">saia</option>
+                <option value="vestido">vestido</option>
+          </select>
+          
 
           <InputField
             id="preco"
@@ -121,13 +121,20 @@ const FormEditProduct = () => {
             error={null}
             required
           />
+        <div className='description-register-product'>
+          <textarea
+           name="description"
+           id='description'
+           value={productUpdated.description}
+           onChange={(e) => handleAtributeProduct("description",e.target.value)}
+           required></textarea>
+          <label htmlFor="description">Descrição do produto</label>
+        </div>
 
           <button className='btn-edit' type='submit'>
             Atualizar
           </button>
         </form> 
-
-        <div className='close-model-edit' onClick={()=>setProductEditSelected(null)}></div>
       </div>
     )
   )

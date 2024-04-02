@@ -6,7 +6,6 @@ import PaginationProducts from '../../ui/PaginationProducts';
 import { FaRegSadCry,FaRegEdit } from 'react-icons/fa';
 import { IoTrashBinOutline } from "react-icons/io5";
 import { CiCirclePlus } from "react-icons/ci";
-import FormEditProduct from '../../FormEditProduct';
 import { Link } from 'react-router-dom'
 
 const Admin = () => {
@@ -16,7 +15,6 @@ const Admin = () => {
   const {
     products,
     handleNameFilterChange,
-    productEditSelected,
     handleProductEditSelected,
     removeProduct
   } = useProduct()
@@ -70,9 +68,9 @@ const Admin = () => {
               <img className='img-product-adm' src={produto.urlImage} alt={produto.name} />
               <h3 className='name-product-adm'>{produto.name}</h3>
               <div className='action-product-adm'>
-                <button className='edit-product' onClick={()=>handleProductEditSelected(produto.id)}>
+                <Link to={`/product/${produto.id}`} className='edit-product' onClick={()=>handleProductEditSelected(produto.id)}>
                   <FaRegEdit/>
-                </button>
+                </Link>
                 <button className='remove-product' onClick={()=>removeProduct(produto.id)}>
                   <IoTrashBinOutline/>
                 </button>
@@ -84,12 +82,6 @@ const Admin = () => {
             <h3 className='msg-notfilter'><span>Sem resultados</span> <FaRegSadCry/></h3>
           )}
       </section>
-      
-      {
-        !!productEditSelected && (
-          <FormEditProduct/>
-        )
-      }
       
       <PaginationProducts/>
     </main>
