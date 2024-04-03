@@ -5,6 +5,7 @@ import Loader from './Loader'
 import React from 'react'
 import PrivateRouter from './PrivateRoute'
 import PrivateRouterAdm from './PrivateRouteAdm'
+import ComponentFooter from './ComponentFooter'
 
 // Lazy loading
 const LazyLoader = () => {
@@ -112,7 +113,7 @@ const EcommerceRoutes = () => {
 
         <Route path='*' element={<h1>Page 404 not found</h1>}/>
       </Routes>
-
+      <ComponentFooter/>
       <Loader/>
     </BrowserRouter>
   )
