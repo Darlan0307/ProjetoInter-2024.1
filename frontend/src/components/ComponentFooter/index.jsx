@@ -1,16 +1,48 @@
 import './style.css'
 import Logo from '../../assets/logo.png'
+import { useState } from 'react'
+import { toast } from 'react-toastify'
+import { MoveToTop } from '../../utils/MoveToTop'
+
+function validarEmail(email) {
+  // Expressão regular para validação de email
+  const regexEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+  // Retorna true se o email for válido, false caso contrário
+  return regexEmail.test(email);
+}
 
 const ComponentFooter = () => {
+
+  const [emailTemp,setEmailTemp] = useState('')
+
+  const handleClick = () => {
+
+    if(!validarEmail(emailTemp)){
+      toast.error("Email inválido!")
+      return;
+    }
+
+    MoveToTop()
+    toast.success("Mandaremos as novidades para o seu email")
+    setEmailTemp('')
+  }
+
   return (
     <footer className='footer'>
       <article >
         <h2>Receba novidades pelo E-mail.</h2>
        <div>
-        <input type="text" />
-          <button>
-            <p>Quero Receber</p>
-          </button>
+        <input
+        value={emailTemp}
+        type="text"
+        onChange={(e)=>setEmailTemp(e.target.value)}
+        />
+        <button
+        onClick={handleClick}
+        >
+          <p>Quero Receber</p>
+        </button>
        </div>
       </article>
 
