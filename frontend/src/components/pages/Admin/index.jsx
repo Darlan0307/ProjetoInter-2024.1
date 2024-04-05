@@ -1,12 +1,13 @@
 import './style.css'
 import InputSearch from '../../ui/InputSearch';
 import { useProduct } from '../../../context/ProductContext';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PaginationProducts from '../../ui/PaginationProducts';
 import { FaRegSadCry,FaRegEdit } from 'react-icons/fa';
 import { IoTrashBinOutline } from "react-icons/io5";
 import { CiCirclePlus } from "react-icons/ci";
 import { Link } from 'react-router-dom'
+import { MoveToTop } from '../../../utils/MoveToTop'
 
 const Admin = () => {
 
@@ -16,6 +17,7 @@ const Admin = () => {
     products,
     handleNameFilterChange,
     handleProductEditSelected,
+    handleCleanFilterChange,
     removeProduct
   } = useProduct()
 
@@ -32,6 +34,11 @@ const Admin = () => {
       handleNameFilterChange(textProduct);
     }, 1000);
   };
+
+  useEffect(()=>{
+    MoveToTop()
+    handleCleanFilterChange()
+  },[])
 
   return (
     <main className='adm-page'>

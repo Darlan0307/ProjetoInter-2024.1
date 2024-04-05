@@ -1,7 +1,8 @@
 import '../globalSteps.css'
 import InputField from '../../ui/Input'
 import { useAuth } from '../../../context/AuthContext'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { MoveToTop } from '../../../utils/MoveToTop'
 
 const InfoUser = () => {
 
@@ -10,6 +11,10 @@ const InfoUser = () => {
   const [infoName,setInfoName] = useState(user.name)
   const [infoEmail,setInfoEmail] = useState(user.email)
   const [infoFone,setInfoFone] = useState()
+
+  useEffect(()=>{
+    MoveToTop()
+  },[])
 
   return (
     <div className='container-form-generec'>
