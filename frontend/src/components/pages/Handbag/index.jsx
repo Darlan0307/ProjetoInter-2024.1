@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react'
+import { useEffect } from 'react'
 import { useProduct } from '../../../context/ProductContext'
 import './style.css'
 import { Link } from 'react-router-dom'
