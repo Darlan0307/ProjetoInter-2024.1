@@ -9,16 +9,27 @@
   justify-content: center;
   align-items: center;
   gap: 2em;
-  background-color: transparent;
-  backdrop-filter: blur(5px);
+  background-color: #6bb1cd42;
+  backdrop-filter: blur(10px);
   z-index: 10;
 }
 
 .container-loader > h2{
-  color: #333;
+  color: white;
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.678);
   font-size: 2em;
   position: absolute;
   top: 25vh;
+}
+
+.container-loader > p{
+  font-size: 1.5em;
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.678);
+  text-align: center;
+  color: white;
+  position: absolute;
+  top: 65vh;
+  font-weight: bold;
 }
 
 .loader {

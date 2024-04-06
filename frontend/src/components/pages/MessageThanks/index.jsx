@@ -1,8 +1,15 @@
 import { Link } from 'react-router-dom'
 import AnimationLottie from '../../AnimationLottie'
 import './style.css'
+import { useEffect } from 'react'
+import { MoveToTop } from '../../../utils/MoveToTop'
 
 const MessageThanks = () => {
+
+  useEffect(()=>{
+    MoveToTop()
+  },[])
+
   return (
     <main className='container-thanks'>
       <div className='container-animatejson'>
