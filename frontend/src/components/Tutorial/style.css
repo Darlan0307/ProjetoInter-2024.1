@@ -10,7 +10,7 @@
   background-color: var(--bg-color);
   display: grid;
   place-content: center;
-  
+  gap: 1.4em;
 }
 
 .step-tutorial{
@@ -19,12 +19,19 @@
   display: grid;
   place-content: center;
 }
+@media (width >= 1000px){
+  .step-tutorial{
+    min-height: 300px;
+  }
+}
 
 .buttons-formsteps{
   display: flex;
   justify-content: center;
   gap: 2em;
 }
+
+
 
 .buttons-formsteps button{
   padding: 10px;

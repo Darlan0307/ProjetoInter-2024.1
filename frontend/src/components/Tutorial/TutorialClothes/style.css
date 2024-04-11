@@ -9,15 +9,12 @@
   color: var(--font-color);
 }
 
-@media (width >= 1000px){
-  .clothes{
-    flex-direction: row-reverse;
-  }
-}
+
 
 .container-animate-clothes{
   width: 90%;
-  max-width: 350px;
+  max-width: 250px;
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.6));
 }
 
 .clothes h2{
@@ -28,4 +25,14 @@
 
 .clothes h2 span{
   color: var(--primary-color);
+}
+
+@media (width >= 1000px){
+  .clothes{
+    flex-direction: row-reverse;
+  }
+
+  .container-animate-clothes{
+    max-width: 360px;
+  } 
 }

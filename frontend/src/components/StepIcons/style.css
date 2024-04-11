@@ -29,3 +29,26 @@
 .active svg{
   fill: var(--primary-color);
 }
+
+.icons-steps > div > div{
+  width:40px;
+  height: 40px;
+  background-color: var(--font-color);
+  transition: all 1s;
+  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+}
+
+@media (width >= 900px){
+  .icons-steps > div > div{
+    width: 60px;
+    height: 60px;
+  }
+}
+
+#stepfinal{
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.icons-steps > div > div.step-active{
+  background-color: var(--primary-color);
+}
