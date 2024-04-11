@@ -15,7 +15,7 @@ const Loader = () => {
     
     const id = setTimeout(()=>{
       setOpenMsg(true)
-    },5000)
+    },10000)
 
     return () => clearTimeout(id)
   },[isLoading])

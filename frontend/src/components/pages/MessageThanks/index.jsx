@@ -3,6 +3,7 @@ import AnimationLottie from '../../AnimationLottie'
 import './style.css'
 import { useEffect } from 'react'
 import { MoveToTop } from '../../../utils/MoveToTop'
+import animationData from '../../../JsonAnimate/checked.json';
 
 const MessageThanks = () => {
 
@@ -13,7 +14,7 @@ const MessageThanks = () => {
   return (
     <main className='container-thanks'>
       <div className='container-animatejson'>
-        <AnimationLottie/>
+        <AnimationLottie animationData={animationData}/>
       </div>
       <h2>Pedido Finalizado!</h2>
       <p>Ficamos felizes por escolher os nossos produtos.</p>

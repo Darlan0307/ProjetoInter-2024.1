@@ -1,0 +1,30 @@
+@import url(../../../variables.css);
+
+.welcome{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  color: var(--font-color);
+}
+
+.welcome h1{
+  font-size: clamp(1.5em,3vw,2.3em);
+}
+
+.welcome h1,.welcome p{
+  text-align: center;
+}
+
+.welcome h1 span{
+  color: var(--primary-color);
+}
+
+.welcome p{
+  font-size: clamp(1.1em,3vw,1.5em);
+  max-width: 700px;
+}
+
+.welcome img{
+  width: 200px;
+}

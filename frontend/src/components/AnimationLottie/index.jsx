@@ -1,8 +1,7 @@
 import Lottie from 'lottie-web';
 import { useEffect, useRef } from 'react';
-import animationData from '../../JsonAnimate/checked.json';
 
-const AnimationLottie = () => {
+const AnimationLottie = ({animationData}) => {
   const lottieContainer = useRef(null);
 
   useEffect(() => {
