@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState,useRef } from 'react'
 import {useProduct} from '../../../context/ProductContext'
 import { useMediaQuery } from 'react-responsive';
 import { MoveToTop } from '../../../utils/MoveToTop'
@@ -9,6 +9,7 @@ import { FaCirclePlus } from "react-icons/fa6";
 import ModelProductSelected from '../../ModelProductSelected';
 import PaginationProducts from '../../ui/PaginationProducts';
 import InputSearch from '../../ui/InputSearch';
+import gsap from 'gsap';
 const Products = () => {
 
   const isMobile = useMediaQuery({ query: '(max-width: 900px)' });
@@ -26,6 +27,21 @@ const Products = () => {
   const [textProduct,setTextProduct] = useState("")
   const [openFiltros,setOpenFiltros] = useState(!isMobile)
 
+  const containerAnimate = useRef(null)
+
+  const animate = () => {
+    gsap.fromTo(containerAnimate.current.querySelectorAll('.card-product'), {
+      opacity: 0,
+      y: window.innerHeight,
+    }, {
+      y: 0, // Largura da tela para mover o elemento para fora da tela,
+      opacity: 1,
+      ease: "back.inOut",
+      duration: 2,
+      stagger: 0.2,
+    }); 
+  }
+
   let timeoutId = null;
 
   const handleSearchChange = (e) => {
@@ -42,6 +58,7 @@ const Products = () => {
 
   useEffect(() => {
     MoveToTop()
+    animate()
     return () => clearTimeout(timeoutId);
   }, []);
 
@@ -52,7 +69,7 @@ const Products = () => {
   }, [textProduct]);
 
   return (
-    <main className='products-page'>
+      <main className='products-page'>
       <section className='section-filter-product'>
 
         <InputSearch
@@ -126,7 +143,7 @@ const Products = () => {
             textProduct ? `Resultados para  "${textProduct}"` : 'Todos os produtos'
           }</h2>
 
-          <div className='cards-products'>
+          <div className='cards-products' ref={containerAnimate}>
             {products.length > 0 ? (
               <>
               {products.map((product)=>(

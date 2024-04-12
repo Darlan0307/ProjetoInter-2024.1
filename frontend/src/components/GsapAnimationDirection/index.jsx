@@ -1,6 +1,6 @@
 import gsap from 'gsap';
-import { useEffect } from 'react';
 import { useRef } from 'react';
+import { useEffect } from 'react';
 
 const GsapAnimationDirection = ({ children, from, to, duration }) => {
   const container = useRef(null);

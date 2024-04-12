@@ -1,14 +1,14 @@
 import './style.css'
 import InputSearch from '../../ui/InputSearch';
 import { useProduct } from '../../../context/ProductContext';
-import { useEffect, useState } from 'react';
+import { useEffect, useState,useRef } from 'react';
 import PaginationProducts from '../../ui/PaginationProducts';
 import { FaRegSadCry,FaRegEdit } from 'react-icons/fa';
 import { IoTrashBinOutline } from "react-icons/io5";
 import { CiCirclePlus } from "react-icons/ci";
 import { Link } from 'react-router-dom'
 import { MoveToTop } from '../../../utils/MoveToTop'
-
+import gsap from 'gsap';
 const Admin = () => {
 
   const [textProduct,setTextProduct] = useState("")
@@ -22,6 +22,21 @@ const Admin = () => {
   } = useProduct()
 
   let timeoutId
+
+  const containerAnimate = useRef(null)
+
+  const animate = () => {
+    gsap.fromTo(containerAnimate.current.querySelectorAll('.product-adm'), {
+      opacity: 0,
+      y: window.innerHeight,
+    }, {
+      y: 0, // Largura da tela para mover o elemento para fora da tela,
+      opacity: 1,
+      ease: "back.inOut",
+      duration: 2,
+      stagger: 0.2,
+    });
+  }
 
   const handleSearchChange = (e) => {
     setTextProduct(e.target.value);
@@ -37,6 +52,7 @@ const Admin = () => {
 
   useEffect(()=>{
     MoveToTop()
+    animate()
     handleCleanFilterChange()
   },[])
 
@@ -64,7 +80,7 @@ const Admin = () => {
           }
       </h2> 
 
-      <section className='container-products-adm'>
+      <section className='container-products-adm' ref={containerAnimate}>
           {products.length > 0 ? (
             <>
               {products.map((produto)=>(
