@@ -10,7 +10,7 @@ const InfoPagamento = () => {
 
   return (
     <GsapAnimationDirection
-      from={{ opacity: 0, x: 300 }}
+      from={{ opacity: 0, x: -300 }}
       to={{ opacity: 1, x: 0 }}
       duration={.6}
     >
