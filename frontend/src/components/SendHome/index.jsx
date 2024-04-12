@@ -25,7 +25,7 @@ useLayoutEffect(() => {
           opacity: 1,
           scrollTrigger: {        
               trigger: card1Ref.current,
-              markers: true,
+              markers: false,
               start: "top center",
               end: "bottom center",
               toggleActions: "play none none reset",
@@ -39,7 +39,7 @@ useLayoutEffect(() => {
           opacity: 1,
           scrollTrigger: {        
               trigger: card2Ref.current,
-              markers: true,
+              markers: false,
               start: "top center",
               end: "bottom center",
               toggleActions: "play none none reset",
@@ -54,7 +54,7 @@ useLayoutEffect(() => {
           opacity: 1,
           scrollTrigger: {        
               trigger: card3Ref.current,
-              markers: true,
+              markers: false,
               start: "top center",
               end: "bottom center",
               toggleActions: "play none none reset",
