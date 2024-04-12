@@ -1,5 +1,6 @@
 import { useProduct } from '../../../context/ProductContext'
 import '../globalSteps.css'
+import GsapAnimationDirection from '../../GsapAnimationDirection'
 
 const InfoPagamento = () => {
 
@@ -8,7 +9,12 @@ const InfoPagamento = () => {
   } = useProduct()
 
   return (
-    <div className='container-form-generec'>
+    <GsapAnimationDirection
+      from={{ opacity: 0, x: 300 }}
+      to={{ opacity: 1, x: 0 }}
+      duration={.6}
+    >
+      <div className='container-form-generec'>
       <h3>Estamos quase acabando</h3>
 
       <p>Valor a ser pago na hora da entrega: <span>R${priceTotal},00</span></p>
@@ -33,6 +39,7 @@ const InfoPagamento = () => {
 
       </div>
     </div>
+    </GsapAnimationDirection>
   )
 }
 

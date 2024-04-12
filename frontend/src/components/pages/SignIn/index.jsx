@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import InputField from '../../ui/Input'
 import { useAuth } from '../../../context/AuthContext'
 import { useNavigate } from "react-router-dom";
+import GsapAnimationDirection from '../../GsapAnimationDirection'
 const SignIn = () => {
 
   const [email,setEmail] = useState('')
@@ -27,7 +28,12 @@ const SignIn = () => {
   }
   
   return (
-    <main className='signin'>
+    <GsapAnimationDirection
+      from={{ opacity: 0, x: -300 }}
+      to={{ opacity: 1, x: 0 }}
+      duration={1}
+    >
+      <main className='signin'>
       <img src={imgIlustration} alt="ilustração de uma pessoa na janela" />
       <div className='content-signin'>
         <h2>Faça login</h2>
@@ -58,6 +64,7 @@ const SignIn = () => {
         
       </div>
     </main>
+    </GsapAnimationDirection>
   )
 }
 

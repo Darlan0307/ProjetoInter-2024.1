@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useLoader } from '../../../context/LoaderContext'
 import { toast } from 'react-toastify'
+import GsapAnimationDirection from '../../GsapAnimationDirection'
 
 const InfoLocation = () => {
 
@@ -51,7 +52,12 @@ const InfoLocation = () => {
   },[infoCep])
 
   return (
-    <div className='container-form-generec'>
+    <GsapAnimationDirection
+      from={{ opacity: 0, x: 300 }}
+      to={{ opacity: 1, x: 0 }}
+      duration={.6}
+    >
+      <div className='container-form-generec'>
 
       <h3>Para onde vamos enviar?</h3>
 
@@ -112,7 +118,7 @@ const InfoLocation = () => {
           autoComplete='off'
       />
 
-    <div className='group-input'>
+      <div className='group-input'>
       <InputField
             id="complemento"
             type="text"
@@ -133,9 +139,10 @@ const InfoLocation = () => {
             required
             autoComplete='off'
         />
-    </div>
+      </div>
 
-    </div>
+      </div>
+    </GsapAnimationDirection>
   )
 }
 

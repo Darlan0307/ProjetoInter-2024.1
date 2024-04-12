@@ -8,6 +8,7 @@
   height: 100vh;
   display: grid;
   place-content: center;
+  z-index: 99;
 }
 .container-product{
   z-index: 1;
@@ -37,6 +38,7 @@
   flex-direction: column;
   gap: .5em;
   color: var(--font-color);
+  width: 90%;
 }
 
 .title-product-selected{

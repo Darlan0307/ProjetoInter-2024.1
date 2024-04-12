@@ -8,6 +8,7 @@ import InputField from '../../ui/Input'
 import { toast } from 'react-toastify'
 import { useAuth } from '../../../context/AuthContext'
 import { useNavigate } from "react-router-dom";
+import GsapAnimationDirection from '../../GsapAnimationDirection'
 const SignUp = () => {
 
   const { registerUser } = useAuth()
@@ -55,7 +56,12 @@ const SignUp = () => {
   },[])
 
   return (
-    <main className='signup'>
+    <GsapAnimationDirection
+      from={{ opacity: 0, x: 300 }}
+      to={{ opacity: 1, x: 0 }}
+      duration={1}
+    >
+      <main className='signup'>
       <img src={imgIlustration} alt="ilustração de uma pessoa na janela" />
       <div className='content-signup'>
         <h2>Crie sua conta agora</h2>
@@ -109,6 +115,7 @@ const SignUp = () => {
         
       </div>
     </main>
+    </GsapAnimationDirection>
   )
 }
 

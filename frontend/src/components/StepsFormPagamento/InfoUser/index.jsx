@@ -3,11 +3,11 @@ import InputField from '../../ui/Input'
 import { useAuth } from '../../../context/AuthContext'
 import { useEffect, useState } from 'react'
 import { MoveToTop } from '../../../utils/MoveToTop'
+import GsapAnimationDirection from '../../GsapAnimationDirection'
 
 const InfoUser = () => {
 
   const { user } = useAuth()
-
   const [infoName,setInfoName] = useState(user.name)
   const [infoEmail,setInfoEmail] = useState(user.email)
   const [infoFone,setInfoFone] = useState()
@@ -17,7 +17,12 @@ const InfoUser = () => {
   },[])
 
   return (
-    <div className='container-form-generec'>
+    <GsapAnimationDirection
+      from={{ opacity: 0, x: 300 }}
+      to={{ opacity: 1, x: 0 }}
+      duration={.6}
+    >
+      <div className='container-form-generec'>
 
       <h3>Confirme seus Dados</h3>
 
@@ -54,7 +59,8 @@ const InfoUser = () => {
           autoComplete='off'
       />
 
-    </div>
+      </div>
+    </GsapAnimationDirection>
   )
 }
 
