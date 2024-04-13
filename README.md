@@ -60,7 +60,7 @@ npm run dev ou yarn start ou pnpm dev
 - ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 - ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 
-  **Back-end:**
+**Back-end:**
 
 - ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 - ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
@@ -72,4 +72,4 @@ npm run dev ou yarn start ou pnpm dev
 
 ## 💡 Social
 
-- Link para o seu linkedin [Meu linkedin](https://www.linkedin.com/in/darlan-martins-8a7956259/)
+- [Meu linkedin](https://www.linkedin.com/in/darlan-martins-8a7956259/)
