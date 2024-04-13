@@ -1,89 +1,75 @@
 ![Logo do projeto](./frontend/src/assets/img-project.png)
 
-# Nome do Projeto
-
-Uma breve descrição do projeto aqui.
+# E-commerce
 
 ## 🔥 Introdução
 
-Coloque aqui as instruções e quais são os objetivos desse projeto, funcionalidades.
+Este projeto apresenta o desenvolvimento de um e-commerce de roupas, com funcionalidades que visam proporcionar uma experiência satisfatória para os clientes.
+
+Sobre a aplicação:
+
+- Design Responsivo
+- Carrossel de produtos
+- Busca e filtragem de produtos
+- página das roupas selecionadas
+- Login e Cadastro de usuários
+- Página somente para os ADM
+- FAQ das perguntas frequentes
 
 ### ⚙️ Pré-requisitos
 
-Coloque aqui passo a passo que precisa para instalar o projeto e como instalá-lo.
+Para você conseguir instalar o projeto na sua máquina, verifique se você tem as seguintes tecnologias:
 
-```
-Pode inserir exemplos.
-```
+- node
+- git
 
 ### 🔨 Guia de instalação
 
-Explique aqui um passo a passo mostrando como deve executar para ter um ambiente de desenvolvimento em execução, desde instalar e rodar o projeto.
-
 Etapas para instalar:
 
+Passo 1:
+
 ```
-Codigo, exemplos
+git clone https://github.com/Darlan0307/ProjetoInter-2024.1.git
 ```
+
 Passo 2:
-```
-Codigo, exemplos
-```
-
-
-## 🛠️ Executando os testes (caso tenha testes)
-
-Explique como executar os testes automatizados para este sistema.
 
 ```
-Coloque exemplos
+cd e-commerce/frontend
+```
+
+Passo 3:
+
+```
+npm install ou yarn install ou pnpm install
+```
+
+Passo 4:
+
+```
+npm run dev ou yarn start ou pnpm dev
 ```
 
 ## 📦 Tecnologias usadas:
 
-Coloque aqui as ferramentas que você usou para criar seu projeto, exemplo:
-
-* ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-* ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-* ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
-
-- Link para pegar as badges: https://github.com/Ileriayo/markdown-badges
-
-Ou pode separar por stacks:
-
 **Front-end:**
-* [React JS](https://react.dev/)
-* [TailwindCSS](https://tailwindcss.com/)
 
-**Back-end:**
-* [NodeJS](https://nodejs.org/).
-* [TypeScript](https://www.typescriptlang.org/) 
-* [Mongo DB](https://mongodb.com/)
+- [React JS](https://react.dev/)
+- ![Context-API](https://img.shields.io/badge/Context--Api-000000?style=for-the-badge&logo=react)
+- ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+- ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 
-## 👷 Autores
+  **Back-end:**
 
-Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início, colaboradores.
+- [NodeJS](https://nodejs.org/).
+- ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
+- ![Nodemon](https://img.shields.io/badge/NODEMON-%23323330.svg?style=for-the-badge&logo=nodemon&logoColor=%BBDEAD)
+- ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+- ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
+- [Mongo DB](https://mongodb.com/)
+- ![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
 
-* **Nome do dev** - *Função realizada* - [nome_do_dev](https://github.com/link_do_Perfil)
-* **Sujeito Programador** - *Frontend do projeto* - [@sujeitoprogramador](https://github.com/devfraga)
+## 💡 Social
 
-## 📄 Licença
-
-Esse projeto está sob a licença (nome da licença) - acesse os detalhes [LICENSE.md](https://github.com/link_da_licenca).
-
-## 💭 FAQ - Perguntas frequentes
-
-#### Questão 1
-
-Resposta 1
-
-#### Questão 2
-
-Resposta 2
-
-
-## 💡 Expressões de gratidão
-
-* Um agradecimento publicamente.
-* Para suporte, mande um email para nome@teste.com.
-* Link para o seu linkedin [Meu linkedin](https://www.linkedin.com/in/darlan-martins-8a7956259/)
+- Link para o seu linkedin [Meu linkedin](https://www.linkedin.com/in/darlan-martins-8a7956259/)
